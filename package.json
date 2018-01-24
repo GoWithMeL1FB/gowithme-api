@@ -4,7 +4,6 @@
   "description": "Handles api for gowithme app",
   "main": "index.js",
   "scripts": {
-    "test": "test"
   },
   "repository": {
     "type": "git",
