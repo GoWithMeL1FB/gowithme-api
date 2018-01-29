@@ -1,3 +1,7 @@
+require('dotenv').config();
+
+import { success, error } from '../../lib/logger';
+
 const Sequelize = require('sequelize');
 const db = new Sequelize('GoWithMe', 'root', '', {
   host: 'localhost',
