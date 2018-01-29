@@ -2,7 +2,7 @@ const envBuild = {
   'rest-server': [
     'DEBUG=TRUE',
     'NODE_ENV=test',
-    'PORT=3030',
+    'PORT=3050',
     'LOCAL_USER=root',
     'LOCAL_HOST=localhost',
     'LOCAL_DATABASE=',
