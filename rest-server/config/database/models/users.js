@@ -1,14 +1,14 @@
 const Sequelize = require('sequelize');
 const db = require('../');
 
-const Users = db.define('Users', {
+module.exports = db.define('Users', {
     id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true
     },
     userid: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
     },
     password: {
       type: Sequelize.STRING
@@ -18,4 +18,4 @@ const Users = db.define('Users', {
     }
 });
 
-module.exports = Users;
+//module.exports = Users;

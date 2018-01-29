@@ -7,6 +7,7 @@ const db = new Sequelize('GoWithMe', 'root', '', {
 
 db.authenticate()
 .then( ()=>{
+  //run seed function
   console.log('Connected to database GoWithMe!');
 })
 .catch( (err) => {
