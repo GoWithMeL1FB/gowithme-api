@@ -1,8 +1,6 @@
-require('dotenv').config();
-
-import { success, error } from '../../lib/logger';
-
 const Sequelize = require('sequelize');
+const seedTables = require('./models/seed');
+
 const db = new Sequelize('GoWithMe', 'root', '', {
   host: 'localhost',
   port: 3306,
@@ -10,8 +8,9 @@ const db = new Sequelize('GoWithMe', 'root', '', {
 });
 
 db.authenticate()
-.then( ()=>{
+.then( () =>{
   //run seed function
+  seedTables();
   console.log('Connected to database GoWithMe!');
 })
 .catch( (err) => {
