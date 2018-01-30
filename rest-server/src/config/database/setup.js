@@ -21,7 +21,7 @@ const setup = async () => {
   process.exit();
 };
 
-setup();
+// setup();
 
 
 

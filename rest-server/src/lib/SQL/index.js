@@ -4,7 +4,7 @@ import db from '../../config/database';
 import { success, error } from '../logger';
 
 const database = process.env.NODE_ENV === 'production' ? process.env.AWS_DATABASE : process.env.LOCAL_DATABASE;
-
+// do not use queryAsync:{
 // database SQL statements to create, drop, and use a database
 export const createDatabase = async () => {
   try {
