@@ -5,11 +5,11 @@ cache:
     - node_modules
 before_script:
   - sudo apt-get -qq update # qq for less output
+  - cd rest-server
+  - yarn start && stop 10
 install:
   - npm install
 script:
-  - cd rest-server
-  - yarn start && stop 10
   # - yarn build && stop 10
   # - zip -r latest *
   # - mkdir -p dpl_cd_upload_ui
