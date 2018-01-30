@@ -10,7 +10,7 @@ import { success, error } from '../../../lib/logger';
 //const seedTables = require('./models/seed');
 
 //assign dependencies
-//try without asyc 
+//try without asyc
 Users
 .sync()
 .then( () => {
