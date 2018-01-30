@@ -8,7 +8,7 @@ before_script:
 install:
   - npm install
 script:
-  - cd '/rest-server' && npm start && stop 10
+  - cd rest-server && npm start && stop 10
   # - yarn build && stop 10
   # - zip -r latest *
   # - mkdir -p dpl_cd_upload_ui
