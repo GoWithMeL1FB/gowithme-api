@@ -7,8 +7,11 @@ module.exports = db.define('Users', {
     primaryKey: true,
     autoIncrement: true
     },
-    userid: {
-      type: Sequelize.INTEGER
+    email: {
+      type: Sequelize.STRING
+    },
+    username: {
+      type: Sequelize.STRING
     },
     password: {
       type: Sequelize.STRING
