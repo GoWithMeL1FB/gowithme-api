@@ -1,11 +1,14 @@
 const Sequelize = require('sequelize');
-// const seedTables = require('./models/seed');
 
-const db = new Sequelize('GoWithMe', 'root', 'root', {
+
+const db = new Sequelize('GoWithMe', 'gowithme', 'password', {
   host: 'localhost',
   dialect: 'mysql',
-  // port: 3306,
+  port: 3306,
+  logging: false,
 });
+
+// const seedTables = require('./models/seed');
 
 db.authenticate()
   .then( () =>{
