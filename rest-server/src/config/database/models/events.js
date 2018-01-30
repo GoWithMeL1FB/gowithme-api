@@ -7,7 +7,7 @@ module.exports = db.define('events', {
     autoIncrement: true
     },
 	name: {
-    type: Sequelize.STRING(30)
+    type: Sequelize.STRING
   },
 	start: {
     type: Sequelize.TIME
@@ -22,5 +22,5 @@ module.exports = db.define('events', {
     type: Sequelize.INTEGER
   }
 
-}); 
+});
 //module.exports = events;

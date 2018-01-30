@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const db = require('../');
+const db = require('../index');
 
 module.exports = db.define( 'categories', {
   id: {
@@ -8,7 +8,7 @@ module.exports = db.define( 'categories', {
     autoIncrement: true
     },
 	name: {
-    type: Sequelize.varchar(30),
+    type: Sequelize.STRING,
     allowNull: false
   }
 });
