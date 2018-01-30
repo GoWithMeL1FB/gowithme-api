@@ -1,20 +1,20 @@
 const Sequelize = require('sequelize');
-const seedTables = require('./models/seed');
+// const seedTables = require('./models/seed');
 
-const db = new Sequelize('GoWithMe', 'root', '', {
+const db = new Sequelize('GoWithMe', 'root', 'root', {
   host: 'localhost',
-  port: 3306,
   dialect: 'mysql',
+  // port: 3306,
 });
 
 db.authenticate()
-.then( () =>{
-  //run seed function
-  seedTables();
-  console.log('Connected to database GoWithMe!');
-})
-.catch( (err) => {
-  console.log('Attempt to start database failed: ', err);
-} );
+  .then( () =>{
+    //run seed function
+    // seedTables();
+    console.log('Connected to database GoWithMe!');
+  })
+  .catch( (err) => {
+    console.log('Attempt to start database failed: ', err);
+  });
 
 module.exports = db;
