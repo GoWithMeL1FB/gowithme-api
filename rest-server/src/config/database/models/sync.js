@@ -7,6 +7,7 @@ const rating = require('./rating');
 const comments = require('./comments');
 const categoryJoin = require('./categoryJoin');
 import { success, error } from '../../../lib/logger'
+const seedTables = require('./seed.js');
 
 //assign dependencies
 
@@ -21,6 +22,7 @@ const syncTables = async () => {
    // await dataCourseEvents.sync();
     await comments.sync();
     await categoryJoin.sync();
+    await seedTables();
     success('successfully created users table ');
   } catch (err) {
     error('error creating database ', err);

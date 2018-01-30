@@ -1,4 +1,5 @@
 import db from '../../config/database';
+
 import { signUpQuery, loginQuery } from './authQueries';
 import { success, error } from '../../lib/logger';
 import { generateToken } from '../../middleware/auth/jwt';
@@ -33,3 +34,4 @@ export const loginController = async (req, res) => {
     throw new Error(err);
   }
 };
+

@@ -1,7 +1,8 @@
 const Sequelize = require("sequelize");
-const db = require('../index');
+const db = require('../index.js');
+console.log('this is db' ,db)
 
-module.export = db.define('Users', {
+module.exports = db.define('Users', {
     id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
@@ -15,6 +16,9 @@ module.export = db.define('Users', {
     },
     password: {
       type: Sequelize.STRING
+    },
+    birthday: {
+      type: Sequelize.INTEGER
     },
     Bio: {
       type: Sequelize.STRING
