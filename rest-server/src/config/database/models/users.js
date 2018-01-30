@@ -16,6 +16,9 @@ module.export = db.define('Users', {
     password: {
       type: Sequelize.STRING
     },
+    birthday: {
+      type: Sequelize.INTEGER
+    },
     Bio: {
       type: Sequelize.STRING
     }
