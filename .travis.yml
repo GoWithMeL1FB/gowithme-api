@@ -4,12 +4,12 @@ cache:
   directories:
     - node_modules
 before_script:
-  # - sudo apt-get -qq update # qq for less output
+  - sudo apt-get -qq update # qq for less output
 install:
   - npm install
 script:
   - cd rest-server
-  - npm start && stop 10
+  - npm run start && stop 10
   # - yarn build && stop 10
   # - zip -r latest *
   # - mkdir -p dpl_cd_upload_ui
