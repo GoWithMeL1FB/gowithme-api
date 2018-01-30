@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "test",
-    "start": "nodemon bin/entry.js"
+    "start": "nodemon bin/entry.js",
+    "seed": "node src/config/database/models/seed.js "
   },
   "author": "",
   "license": "ISC",

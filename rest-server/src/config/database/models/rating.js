@@ -1,7 +1,7 @@
-const Sequelize = require('sequelize');
-const db = require('../');
+const Sequelize = require("sequelize");
+const db = require('../index');
 
-module.exports = ( 'rating', {
+module.exports = db.define( 'rating', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,

@@ -14,5 +14,7 @@
     "url": "https://github.com/GoWithMeL1FB/gowithme-api/issues"
   },
   "homepage": "https://github.com/GoWithMeL1FB/gowithme-api#readme",
-  "dependencies": {}
+  "dependencies": {
+    "bluebird": "^3.5.1"
+  }
 }
