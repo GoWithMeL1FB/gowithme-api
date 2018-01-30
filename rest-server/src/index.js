@@ -3,6 +3,7 @@ import http from 'http';
 import App from './config/express';
 import { success } from '../src/lib/logger';
 import './config/database';
+// import './config/database/mysql';
 
 const app = App.express;
 
