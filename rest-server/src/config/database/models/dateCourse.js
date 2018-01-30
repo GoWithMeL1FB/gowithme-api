@@ -24,11 +24,11 @@ module.exports = db.define('dateCourse', {
     allowNull: false
   },
 	people: {
-    type: Sequelize.smallint,
+    type: Sequelize.INTEGER,
     allowNull: false
   },
 	rating: {
-    type: Sequelize.tinyint,
+    type: Sequelize.INTEGER,
     allowNull: false
   },
 	coments: {
@@ -36,11 +36,11 @@ module.exports = db.define('dateCourse', {
     allowNull: false
   },
 	creator: {
-    type: Sequelize.tinyint,
+    type: Sequelize.INTEGER,
     allowNull: false
   },
 	rating_count: {
-    type: Sequelize.tinyint,
+    type: Sequelize.INTEGER,
     allowNull: false
   },
 

@@ -15,7 +15,7 @@ export const signUpQuery = async (body) => {
     throw new Error(err);
   }
 };
-
+// fix queryAsync
 export const loginQuery = async (body) => {
   try {
     const queryString = loginHelper(body);

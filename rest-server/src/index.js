@@ -2,8 +2,9 @@ import http from 'http';
 
 import App from './config/express';
 import { success } from '../src/lib/logger';
-import './config/database';
-// import './config/database/mysql';
+import  './config/database';
+const db = require('./config/database/models/sync');
+//const seedTables = require("./config/database/models/seed");
 
 const app = App.express;
 

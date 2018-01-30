@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../');
 
-module.exports = ( 'comments', {
+module.exports = db.define( 'comments', {
 	id: {
     type: Sequelize.INTEGER,
     primaryKey: true,

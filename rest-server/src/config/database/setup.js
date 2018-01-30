@@ -1,28 +1,35 @@
 import {
-  // create tables
   createDatabase,
-  useDatabase,
-  createUserTable,
-  // dropping tables
+  createUsersTable,
+  createCategoriesTable,
+  createCommentsTable,
+  createCategoryJoinTable,
+  createRatingTable,
+  dropDatabase,
   dropUserTable,
-  dropDatabase
-
-} from '../../lib/SQL'
-
-// const setup = async () => {
-//   // create tables & db
-//   await createDatabase();
-//   await userDatabse();
-//   await createUserTable();
-//   // drop tables and db
-//   await dropUserTable();
-//   await dropDatabase();
-
-//   process.exit();
-// };
-
-// setup();
+  dropCategoriesTable,
+  dropCommentsTable,
+  dropCategoryJoinTable,
+  dropRatingTable,
+  useDatabase,
+} from '../../lib/SQL';
 
 
+const setup = async () => {
+  await dropDatabase();
+  await dropUserTable();
+  await dropCategoriesTable();
+  await dropCategoryJoinTable();
+  await dropCommentsTable();
+  await dropRatingTable();
+  await createDatabase();
+  await createUserTable();
+  await createCategoriesTable();
+  await createCategoryJoinTable();
+  await createCommentsTable();
+  await createRatingTable();
+  process.exit();
+};
 
+setup();
 // do we need this ^^ ?!??????!?!!?!?????

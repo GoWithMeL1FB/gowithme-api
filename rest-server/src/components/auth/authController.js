@@ -1,5 +1,5 @@
 import db from '../../config/database';
-
+import axios from 'axios'
 import { signUpQuery, loginQuery } from './authQueries';
 import { success, error } from '../../lib/logger';
 import { generateToken } from '../../middleware/auth/jwt';
@@ -7,7 +7,7 @@ import { hashPassword } from '../../middleware/auth/bcrypt';
 
 export const signUpController = async (req, res) => {
   try {
-    // req.body.password = await hashPassword(req.body.password)
+    req.body.password = await hashPassword(req.body.password)
     // const { rows } = await signUpQuery(req.body);
     // const { id, username } = rows[0];
     // success('signUpController - successfully retrieved data ', JSON.stringify(rows[0]));

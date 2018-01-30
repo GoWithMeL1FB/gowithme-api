@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "test",
-    "start": "nodemon bin/entry.js"
+    "start": "nodemon bin/entry.js",
+    "seed": "node src/config/database/models/seed.js "
   },
   "author": "",
   "license": "ISC",
@@ -29,7 +30,6 @@
     "jsonwebtoken": "^8.1.1",
     "mysql": "^2.15.0",
     "mysql2": "^1.5.1",
-    "nodemon": "^1.14.11",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-google-auth": "^1.0.2",
@@ -41,6 +41,7 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
+    "nodemon": "^1.14.11",
     "supertest": "^3.0.0"
   }
 }
