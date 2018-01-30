@@ -41,5 +41,4 @@ module.exports = { Users, categories, rating, comments, categoryJoin };
 //     error('error creating database ', err);
 //   }
 // };
-
 // syncTables()

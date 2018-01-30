@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+
 // import Promise from 'bluebird';
 const Promise = require('bluebird');
 // const seedTables = require('./models/seed');
@@ -7,7 +8,10 @@ const db = new Sequelize('GoWithMe', 'root', '', {
   host: 'localhost',
   dialect: 'mysql',
    port: 3306,
+  logging: false
 });
+
+// const seedTables = require('./models/seed');
 
 db.authenticate()
   .then(() =>{

@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
-const db = require('../index');
+const db = require('../index.js');
+console.log('this is db' ,db)
 
 module.exports = db.define('Users', {
     id: {
@@ -15,6 +16,9 @@ module.exports = db.define('Users', {
     },
     password: {
       type: Sequelize.STRING
+    },
+    birthday: {
+      type: Sequelize.INTEGER
     },
     Bio: {
       type: Sequelize.STRING
