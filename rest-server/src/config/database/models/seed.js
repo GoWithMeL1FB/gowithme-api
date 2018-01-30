@@ -11,45 +11,44 @@ console.log("seed page");
 
 const seedTables = () =>{
     Users.bulkCreate([
-  {
-    id: 1,
-    username: "Jon",
-    password: "password",
-    email: "jonDoe@fakeemail.com",
-    bio: "This is the test bio for Jon Doe fake user seed data."
-  },
-  {
-    id: 2,
-    username: "Jane",
-    password: "password",
-    email: "janeDoe@fakeemail.com",
-    bio: "This is the test bio for jane Doe fake user seed data."
-
-  } 
-])
-.then(() => { 
-  console.log('users seed data created'); 
-})
-.catch(err => {
-  console.error('users seed failed', err);
-});
+      {
+        id: 1,
+        username: "Jon",
+        password: "password",
+        email: "jonDoe@fakeemail.com",
+        bio: "This is the test bio for Jon Doe fake user seed data."
+      },
+      {
+        id: 2,
+        username: "Jane",
+        password: "password",
+        email: "janeDoe@fakeemail.com",
+        bio: "This is the test bio for jane Doe fake user seed data."
+      }
+    ])
+      .then(() => {
+        console.log('users seed data created');
+      })
+      .catch(err => {
+        console.error('users seed failed', err);
+      });
 
 categories.bulkCreate([
   {
-    id: 1, 
-    name: "food" 
+    id: 1,
+    name: "food"
   },
   {
-    id: 2, 
+    id: 2,
     name: "activity"
   },
   {
-    id: 3, 
+    id: 3,
     name: "event"
   }
 ])
-.then(() => { 
-  console.log('categories seed data created'); 
+.then(() => {
+  console.log('categories seed data created');
 })
 .catch(err => {
   console.error('categories seed failed', err);
@@ -69,14 +68,14 @@ categories.bulkCreate([
 //     rating_count: 0
 //   }
 // ])
-// .then(() => { 
-//   console.log('dateCourse seed data created'); 
+// .then(() => {
+//   console.log('dateCourse seed data created');
 // })
 // .catch(err => {
 //   console.error('dateCourse seed failed', err);
 // });
 
-// events.bulkCreate([ 
+// events.bulkCreate([
 //   {
 //     id: 1,
 //     name: "Griffith Observatory",
@@ -84,21 +83,21 @@ categories.bulkCreate([
 //     categories: [2]
 //   }
 // ])
-// .then(() => { 
-//   console.log('events seed data created'); 
+// .then(() => {
+//   console.log('events seed data created');
 // })
 // .catch(err => {
 //   console.error('events seed failed', err);
 // });
 
 // dataCourseEvents.bulkCreate([
-//   { 
+//   {
 //     dataCourse_id: 1,
 //     event_id: 1
 //   }
 // ])
-// .then(() => { 
-//   console.log('dateCourseEvents seed data created'); 
+// .then(() => {
+//   console.log('dateCourseEvents seed data created');
 // })
 // .catch(err => {
 //   console.error('dateCourseEvents seed failed', err);
@@ -113,8 +112,8 @@ comments.bulkCreate([
     parent_id: null
   }
 ])
-.then(() => { 
-  console.log('comments seed data created'); 
+.then(() => {
+  console.log('comments seed data created');
 })
 .catch(err => {
   console.error('comments seed failed', err);
@@ -128,8 +127,8 @@ rating.bulkCreate([
     rating: 4
   }
 ])
-  .then(() => { 
-    console.log('rating seed data created'); 
+  .then(() => {
+    console.log('rating seed data created');
   })
   .catch(err => {
     console.error('rating seed failed', err);
@@ -143,8 +142,8 @@ categoryJoin.bulkCreate([
     event_id: null
   }
 ])
-  .then(() => { 
-    console.log('categoryJoin seed data created'); 
+  .then(() => {
+    console.log('categoryJoin seed data created');
   })
   .catch(err => {
     console.error('categoryJoin seed failed', err);
