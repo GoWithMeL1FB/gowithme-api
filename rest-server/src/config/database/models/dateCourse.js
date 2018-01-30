@@ -24,7 +24,7 @@ module.exports = db.define('dateCourse', {
     allowNull: false
   },
 	people: {
-    type: Sequelize.smallint,
+    type: Sequelize.INTEGER,
     allowNull: false
   },
 	rating: {
