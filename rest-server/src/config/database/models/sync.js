@@ -6,6 +6,7 @@ const rating = require('./rating');
 //const dataCourseEvents = require('./dateCourseEvents');
 const comments = require('./comments');
 const categoryJoin = require('./categoryJoin');
+import { success, error } from '../../../lib/logger'
 
 //assign dependencies
 
