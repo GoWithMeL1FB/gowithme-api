@@ -9,17 +9,17 @@ import {
 
 } from '../../lib/SQL'
 
-const setup = async () => {
-  // create tables & db
-  await createDatabase();
-  await userDatabse();
-  await createUserTable();
-  // drop tables and db
-  await dropUserTable();
-  await dropDatabase();
+// const setup = async () => {
+//   // create tables & db
+//   await createDatabase();
+//   await userDatabse();
+//   await createUserTable();
+//   // drop tables and db
+//   await dropUserTable();
+//   await dropDatabase();
 
-  process.exit();
-};
+//   process.exit();
+// };
 
 // setup();
 
