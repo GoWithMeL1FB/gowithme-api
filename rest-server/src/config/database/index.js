@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
 
-
 const db = new Sequelize('GoWithMe', 'gowithme', 'password', {
   host: 'localhost',
   dialect: 'mysql',
