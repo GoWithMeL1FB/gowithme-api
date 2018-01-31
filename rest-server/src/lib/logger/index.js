@@ -6,7 +6,7 @@ export const success = (...logger) => {
   }
 };
 
-export const warning = (...log) => {
+export const warning = (...logger) => {
   if (process.env.DEBUG === 'TRUE') {
     console.log(chalk.default.white.bgYellow.bold(...logger));
   }
