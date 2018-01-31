@@ -1,7 +1,7 @@
 import { compare, genSalt, hash } from 'bcrypt';
 
 export const hashPW = async (password) => {
-  const salt = await genSalt(JSON.parse(process.env.SALT));
+  const salt = await genSalt(10);
   const hashedPassword = await hash(password, salt);
   return hashedPassword;
 }
