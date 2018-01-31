@@ -3,11 +3,6 @@ const Sequelize = require('sequelize');
 const Promise = require('bluebird');
 // const seedTables = require('./models/seed');
 
-
-// import Promise from 'bluebird';
-const Promise = require('bluebird');
-// const seedTables = require('./models/seed');
-
 const db = new Sequelize('GoWithMe', 'root', '', {
 
   host: 'localhost',
