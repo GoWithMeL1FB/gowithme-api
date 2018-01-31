@@ -13,9 +13,12 @@ const passportGoogle = require('../../middleware/validation/socialApps/google.js
 const router = express.Router();
 
 router.route('/signup')
-  .post(validate(formValidation.signUp), signUpController);
+  .post(signUpController);
 
 router.route('/login')
-  .post(validate(formValidation.login), passport.authenticate('local', { session: false}), loginController);
+  .post(loginController);
+
+// router.route('/login')
+//   .post(validate(formValidation.login), passport.authenticate('local', { session: false}), loginController);
 
 export default router;
