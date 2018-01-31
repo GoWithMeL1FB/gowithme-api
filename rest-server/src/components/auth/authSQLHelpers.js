@@ -5,10 +5,10 @@ export const signUpHelper = ({ email, username, password, birthday}) => {
   `;
 };
 
-export const loginHelper = ({ email }) => {
+export const loginHelper = ({ username }) => {
   return `
     SELECT id, email, username, password
     FROM users
-    WHERE email='${email}'
+    WHERE email='${username}'
   `;
 };

@@ -13,28 +13,21 @@ import { success, error } from '../../../lib/logger';
 //try without asyc
 Users.sync()
   .then( () => {
-    success('USERS table synced')
     categories.sync()
       .then(() => {
-        success('CATEGORIES table synced')
         comments.sync()
           .then(() => {
-            success('COMMENTS table synced')
             categoryJoin.sync()
               .then(() => {
-                success('CATEGORYJOIN table synced')
                 dateCourse.sync()
                   .then(() => {
-                    success('DATECOURSE table synced')
                     events.sync()
                       .then(() => {
-                        success('EVENTS table synced')
                         rating.sync()
                           .then(() => {
-                            success('RATING table synced')
                             dataCourseEvents.sync()
                               .then(() => {
-                                success('DC-EVENTS table synced')
+                                success('tables - all synced')
                               })
                               .catch(() => {
                                 error('dateCourseEvents table failed to sync')

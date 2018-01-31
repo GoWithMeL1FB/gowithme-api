@@ -19,7 +19,6 @@ export const signUpController = async (req, res) => {
   }
 }
 
-
 export const loginController = (req, res) => {
   try {
     Users.find({
@@ -28,10 +27,11 @@ export const loginController = (req, res) => {
       }
     })
       .then(async (user) => {
-        console.log('USER', user.dataValues);
-        const { username, password, email } = user;
+        const { username, email } = user;
+        delete user.dataValues.password;
         const token = await generateToken(username, email)
         user.token = token;
+        success('Login auth - user logged in')
         return res.status(200).append('authorization', JSON.stringify(token)).send(user);
       })
   } catch (err) {
@@ -70,22 +70,3 @@ export const loginController = (req, res) => {
 //     throw new Error(err);
 //   }
 // };
-
-// const hashedPass = await hashPW(req.body.password)
-// const { email, username, birthday, bio } = req.body
-// Users.create({
-//   email: email,
-//   username: sername,
-//   password: hashedPass,
-//   birthday: bithday,
-//   Bio: bio,
-// })
-//   .then(() => {
-//     success('user is being signed up');
-//     warning(generateToken(req.body.username, req.body.email))
-//     res.sendStatus(200);
-//   })
-//   .catch((err) => {
-//     error('error signing up user', err);
-//     res.sendStatus(500);
-//   })

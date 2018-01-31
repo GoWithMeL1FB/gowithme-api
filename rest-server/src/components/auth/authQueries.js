@@ -8,6 +8,7 @@ export const signUpQuery = async (body) => {
   try {
     const queryString = signUpHelper(body);
     db.queryAsync(queryString)
+      // cannot catch errors here... wtf
       // .then((res) => {
       //   if (!res) { warning('insert err')}
       //   warning('signUpQuery - inserted data ');
