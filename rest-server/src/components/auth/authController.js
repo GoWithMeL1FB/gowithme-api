@@ -8,27 +8,15 @@ import { Users } from '../../config/database/models';
 
 export const signUpController = async (req, res) => {
   try {
-    const hashedPass = await hashPW(req.body.password)
-    const { email, username, birthday, bio } = req.body
-    Users.create({
-      email: email,
-      username: sername,
-      password: hashedPass,
-      birthday: bithday,
-      Bio: bio,
-    })
-      .then(() => {
-        success('user is being signed up');
-        warning(generateToken(req.body.username, req.body.email))
-        res.sendStatus(200);
-      })
-      .catch((err) => {
-        error('error signing up user', err);
-        res.sendStatus(500);
-      })
-    } catch (err) {
-      error('error', err)
-    }
+    req.body.password = await hashPW(req.body.password);
+    await signUpQuery(req.body);
+    success('signUpController - successfully inserted user data ');
+    const token = await generateToken(req.body.email, req.body.username);
+    req.body.token = token;
+    return res.append('authorization', JSON.stringify(token)).sendStatus(200).send(req.body);
+  } catch (err) {
+    error('error', err)
+  }
 }
 
 
@@ -83,3 +71,21 @@ export const loginController = (req, res) => {
 //   }
 // };
 
+// const hashedPass = await hashPW(req.body.password)
+// const { email, username, birthday, bio } = req.body
+// Users.create({
+//   email: email,
+//   username: sername,
+//   password: hashedPass,
+//   birthday: bithday,
+//   Bio: bio,
+// })
+//   .then(() => {
+//     success('user is being signed up');
+//     warning(generateToken(req.body.username, req.body.email))
+//     res.sendStatus(200);
+//   })
+//   .catch((err) => {
+//     error('error signing up user', err);
+//     res.sendStatus(500);
+//   })

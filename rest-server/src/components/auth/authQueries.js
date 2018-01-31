@@ -1,4 +1,5 @@
 import db from '../../config/database';
+import axios from 'axios';
 import { signUpHelper, loginHelper } from './authSQLHelpers';
 import { success, error } from '../../lib/logger';
 
@@ -6,10 +7,11 @@ import { success, error } from '../../lib/logger';
 export const signUpQuery = async (body) => {
   try {
     const queryString = signUpHelper(body);
-    const data = await db.queryAsync(queryString);
+    db.queryAsync(queryString)
+      .then(() => {
+        success('signUpQuery - successfully retrieved data ', JSON.stringify());
+      })
     // db.release();
-    success('signUpQuery - successfully retrieved data ', JSON.stringify(data));
-    return data;
   } catch (err) {
     error('signUpQuery - error= ', err);
     throw new Error(err);
