@@ -1,11 +1,13 @@
-var passport = require('passport')
+const passport = require('passport')
   , FacebookStrategy = require('passport-facebook').Strategy;
-var User = require('../models/User');
+const User = require('../models/User'); //need to change
+const FBAPP_ID = process.env.FBAPP_ID;
+const FBAPP_SECRET = process.env.FBAPP_SECRET;
 
 passport.use(new FacebookStrategy({
-    clientID: "159030901322260",
-    clientSecret: "0d641e47f5d55af221ec80346f3f2d43",
-    callbackURL: "http://127.0.0.1:3000/auth/facebook/callback"
+    clientID: FBAPP_ID,
+    clientSecret: FBAPP_SECRET,
+    callbackURL: "http://127.0.0.1:3050/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
     User.findOrCreate({name: profile.displayName}, {name: profile.displayName,userid: profile.id}, function(err, user) {
@@ -16,3 +18,4 @@ passport.use(new FacebookStrategy({
 ));
 
 module.exports = passport;
+//need to use jwt
