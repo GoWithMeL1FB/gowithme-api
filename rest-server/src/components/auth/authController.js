@@ -3,7 +3,7 @@ import { signUpQuery, loginQuery } from './authQueries';
 import { success, error } from '../../lib/logger';
 import { generateToken } from '../../middleware/auth/jwt';
 import { hashPW } from '../../middleware/auth/bcrypt';
-import { users } from '../../config/database/models';
+import users from '../../config/database/models/users';
 
 export const signUpController = async (req, res) => {
   try {
@@ -19,8 +19,9 @@ export const signUpController = async (req, res) => {
   }
 }
 
-export const loginController = (req, res) => {
+export const loginController = async (req, res) => {
   try {
+    console.log(req.body)
     users.find({
       where: {
         username: req.body.username,

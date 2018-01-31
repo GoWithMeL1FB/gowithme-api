@@ -18,15 +18,15 @@ router.route('/signup')
 router.route('/login')
   .post(validate(formValidation.login), passport.authenticate('local', { session: false}),loginController);
 
-router.route('/facebook',
-  passportFacebook.authenticate('facebook'));
+// router.route('/facebook',
+//   passportFacebook.authenticate('facebook'));
 
-router.route('/facebook/callback',
-  passportFacebook.authenticate('facebook', { failureRedirect: '/login' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/');
-  });
+// router.route('/facebook/callback',
+//   passportFacebook.authenticate('facebook', { failureRedirect: '/login' }),
+//   function(req, res) {
+//     // Successful authentication, redirect home.
+//     res.redirect('/');
+//   });
 
 // router.route('/login')
 //   .post(validate(formValidation.login), passport.authenticate('local', { session: false}), loginController);
