@@ -1,43 +1,54 @@
 import db from '../../config/database';
 import axios from 'axios';
 import { signUpQuery, loginQuery } from './authQueries';
-import { success, error } from '../../lib/logger';
+import { success, error, warning } from '../../lib/logger';
 import { generateToken } from '../../middleware/auth/jwt';
-import { hashPassword } from '../../middleware/auth/bcrypt';
-import { Users } from '../../config/database/models/sync';
+import { hashPW } from '../../middleware/auth/bcrypt';
+import { Users } from '../../config/database/models';
 
-export const signUpController = (req, res) => {
-  Users.create({
-    email: req.body.email,
-    username: req.body.username,
-    password: req.body.password,
-    birthday: req.body.bithday,
-    Bio: req.body.bio,
-  })
-    .then(() => {
-      success('user was signup up');
-      res.sendStatus(200).send(`${req.body.username} has beed added to db`);
+export const signUpController = async (req, res) => {
+  try {
+    const hashedPass = await hashPW(req.body.password)
+    const { email, username, birthday, bio } = req.body
+    Users.create({
+      email: email,
+      username: sername,
+      password: hashedPass,
+      birthday: bithday,
+      Bio: bio,
     })
-    .catch((err) => {
-      error('error signing up user', err);
-      res.sendStatus(500);
-    })
+      .then(() => {
+        success('user is being signed up');
+        warning(generateToken(req.body.username, req.body.email))
+        res.sendStatus(200);
+      })
+      .catch((err) => {
+        error('error signing up user', err);
+        res.sendStatus(500);
+      })
+    } catch (err) {
+      error('error', err)
+    }
 }
 
+
 export const loginController = (req, res) => {
-  Users.findAll({
-    where: {
-      username: req.body.username
-    }
-  })
-    .then(() => {
-      success('user logged in')
-      res.sendStatus(200)
+  try {
+    Users.find({
+      where: {
+        username: req.body.username,
+      }
     })
-    .catch((err) => {
-      error('username and or password did not match any accounts', err)
-      res.sendStatus(404).send('username and or password did not match')
-    })
+      .then(async (user) => {
+        console.log('USER', user.dataValues);
+        const { username, password, email } = user;
+        const token = await generateToken(username, email)
+        user.token = token;
+        return res.status(200).append('authorization', JSON.stringify(token)).send(user);
+      })
+  } catch (err) {
+    error('failed to login', err);
+  }
 }
 
 // export const signUpController = async (req, res) => {
