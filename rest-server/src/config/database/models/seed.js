@@ -10,7 +10,7 @@ const categoryJoin = require('./categoryJoin');
 console.log("seed page");
 
 const seedTables = () =>{
-    Users.bulkCreate([
+    users.bulkCreate([
       {
         id: 1,
         username: "Jon",

@@ -1,16 +1,16 @@
 import db from '../../config/database';
-import axios from 'axios';
 import { signUpQuery, loginQuery } from './authQueries';
 import { success, error } from '../../lib/logger';
 import { generateToken } from '../../middleware/auth/jwt';
 import { hashPW } from '../../middleware/auth/bcrypt';
-import { Users } from '../../config/database/models';
+import { users } from '../../config/database/models';
 
 export const signUpController = async (req, res) => {
   try {
     req.body.password = await hashPW(req.body.password);
     await signUpQuery(req.body);
-    success('signUpController - successfully attatched token ');
+    success('signUpController - signed up with token ');
+    delete req.body.password
     const token = await generateToken(req.body.email, req.body.username);
     req.body.token = token;
     return res.append('authorization', JSON.stringify(token)).status(200).send(req.body);
@@ -21,7 +21,7 @@ export const signUpController = async (req, res) => {
 
 export const loginController = (req, res) => {
   try {
-    Users.find({
+    users.find({
       where: {
         username: req.body.username,
       }
@@ -31,7 +31,7 @@ export const loginController = (req, res) => {
         delete user.dataValues.password;
         const token = await generateToken(username, email)
         user.token = token;
-        success('Login auth - user logged in')
+        success('loginController - user logged in with token')
         return res.status(200).append('authorization', JSON.stringify(token)).send(user);
       })
   } catch (err) {
