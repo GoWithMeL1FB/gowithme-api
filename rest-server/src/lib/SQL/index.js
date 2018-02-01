@@ -46,10 +46,10 @@ export const createUsersTable = async() => {
       `
       CREATE TABLE IF NOT EXISTS Users (
         id int NOT NULL,
-        Username varchar(255) NOT NULL UNIQUE,
+        username varchar(255) NOT NULL UNIQUE,
         password varchar(255) NOT NULL,
-        Email varchar(255) NOT NULL,
-        Bio TEXT NOT NULL,
+        email varchar(255) NOT NULL,
+        bio TEXT NOT NULL,
         interests TEXT NOT NULL
       )
       `
@@ -63,7 +63,7 @@ export const createUsersTable = async() => {
 export const dropUserTable = async () => {
   try {
     await db.queryAsync(
-      `DROP TABLE IF EXISTS Users`
+      `DROP TABLE IF EXISTS users`
     );
     success('successfully dropped users table');
   } catch (err) {
