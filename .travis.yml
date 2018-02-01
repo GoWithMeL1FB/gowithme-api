@@ -6,7 +6,7 @@ cache:
     - node_modules
 before_script:
   # - sudo apt-get -qq update # qq for less output
-  - npm run changePass
+  # - npm run changePass
 before_install:
   - npm run buildEnv
   - npm run setup:rest-server
