@@ -1,8 +1,7 @@
-const Sequelize = require('sequelize');
-
+import Sequelize from 'sequelize';
 
 // import Promise from 'bluebird';
-const Promise = require('bluebird');
+import Promise from 'bluebird';
 // const seedTables = require('./models/seed');
 
 const db = new Sequelize('GoWithMe', 'root', '', {

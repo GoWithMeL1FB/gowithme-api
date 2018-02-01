@@ -21,7 +21,6 @@ export const signUpController = async (req, res) => {
 
 export const loginController = async (req, res) => {
   try {
-    console.log(req.body)
     users.find({
       where: {
         username: req.body.username,

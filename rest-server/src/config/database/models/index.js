@@ -1,12 +1,12 @@
-const Users = require('./users');
-const categories = require('./categories');
-const dateCourse = require('./dateCourse');
-const events = require('./events');
-const rating = require('./rating');
-const dataCourseEvents = require('./dateCourseEvents');
-const comments = require('./comments');
-const categoryJoin = require('./categoryJoin');
-import { success, error } from '../../../lib/logger';
+import Users from './users';
+import categories from './categories';
+import dateCourse from './dateCourse';
+import events from './events';
+import rating from './rating';
+import dateCourseEvents from './dateCourseEvents';
+import comments from './comments';
+import categoryJoin from './categoryJoin';
+import { success, error, warning } from '../../../lib/logger';
 //const seedTables = require('./models/seed');
 
 //assign dependencies
@@ -25,7 +25,7 @@ Users.sync()
                       .then(() => {
                         rating.sync()
                           .then(() => {
-                            dataCourseEvents.sync()
+                            dateCourseEvents.sync()
                               .then(() => {
                                 success('tables - all synced')
                               })
