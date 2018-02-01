@@ -1,43 +1,42 @@
 import db from '../../config/database';
-import axios from 'axios';
 import { signUpQuery, loginQuery } from './authQueries';
 import { success, error } from '../../lib/logger';
 import { generateToken } from '../../middleware/auth/jwt';
-import { hashPassword } from '../../middleware/auth/bcrypt';
-import { Users } from '../../config/database/models/sync';
+import { hashPW } from '../../middleware/auth/bcrypt';
+import users from '../../config/database/models/users';
 
-export const signUpController = (req, res) => {
-  Users.create({
-    email: req.body.email,
-    username: req.body.username,
-    password: req.body.password,
-    birthday: req.body.bithday,
-    Bio: req.body.bio,
-  })
-    .then(() => {
-      success('user was signup up');
-      res.sendStatus(200).send(`${req.body.username} has beed added to db`);
-    })
-    .catch((err) => {
-      error('error signing up user', err);
-      res.sendStatus(500);
-    })
+export const signUpController = async (req, res) => {
+  try {
+    req.body.password = await hashPW(req.body.password);
+    await signUpQuery(req.body);
+    success('signUpController - signed up with token ');
+    delete req.body.password
+    const token = await generateToken(req.body.email, req.body.username);
+    req.body.token = token;
+    return res.append('authorization', JSON.stringify(token)).status(200).send(req.body);
+  } catch (err) {
+    error('error', err)
+  }
 }
 
-export const loginController = (req, res) => {
-  Users.findAll({
-    where: {
-      username: req.body.username
-    }
-  })
-    .then(() => {
-      success('user logged in')
-      res.sendStatus(200)
+export const loginController = async (req, res) => {
+  try {
+    users.find({
+      where: {
+        username: req.body.username,
+      }
     })
-    .catch((err) => {
-      error('username and or password did not match any accounts', err)
-      res.sendStatus(404).send('username and or password did not match')
-    })
+      .then(async (user) => {
+        const { username, email } = user;
+        delete user.dataValues.password;
+        const token = await generateToken(username, email)
+        user.token = token;
+        success('loginController - user logged in with token')
+        return res.status(200).append('authorization', JSON.stringify(token)).send(user);
+      })
+  } catch (err) {
+    error('failed to login', err);
+  }
 }
 
 // export const signUpController = async (req, res) => {
@@ -71,4 +70,3 @@ export const loginController = (req, res) => {
 //     throw new Error(err);
 //   }
 // };
-

@@ -1,6 +1,6 @@
 const passport = require('passport')
   , FacebookStrategy = require('passport-facebook').Strategy;
-// const User = require('../models/user'); //need to change
+const User = require('../../../config/database/models/users'); //need to change
 const FBAPP_ID = process.env.FBAPP_ID;
 const FBAPP_SECRET = process.env.FBAPP_SECRET;
 

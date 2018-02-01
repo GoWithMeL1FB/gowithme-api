@@ -1,5 +1,6 @@
-const Sequelize = require('sequelize');
-const db = require('../');
+import Sequelize from 'sequelize';
+import db from '../index';
+
 module.exports = db.define('events', {
   id: {
     type: Sequelize.INTEGER,

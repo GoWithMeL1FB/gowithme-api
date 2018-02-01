@@ -8,7 +8,7 @@ import {
 export const createDatabase = async () => {
   try {
     await db.queryAsync(
-      `CREATE DATABASE gowithme`
+      `CREATE DATABASE GoWithMe`
     );
     success('successfully created database gowithme');
   } catch (err) {
@@ -20,7 +20,7 @@ export const createDatabase = async () => {
 export const dropDatabase = async () => {
   try {
     await db.queryAsync(
-      `DROP DATABASE IF EXISTS gowithme`
+      `DROP DATABASE IF EXISTS GoWithMe`
     );
     success('successfully dropped database gowithme');
   } catch (err) {
@@ -31,7 +31,7 @@ export const dropDatabase = async () => {
 export const useDatabase = async () => {
   try {
     await db.queryAsync(
-      `USE IF EXISTS gowithme`
+      `USE IF EXISTS GoWithMe`
     );
     success('successfully using database gowithme');
   } catch (err) {
@@ -44,12 +44,12 @@ export const createUsersTable = async() => {
   try {
   await  db.queryAsync(
       `
-      CREATE TABLE IF NOT EXISTS Users (
+      CREATE TABLE IF NOT EXISTS users (
         id int NOT NULL,
-        Username varchar(255) NOT NULL UNIQUE,
+        username varchar(255) NOT NULL UNIQUE,
         password varchar(255) NOT NULL,
-        Email varchar(255) NOT NULL,
-        Bio TEXT NOT NULL,
+        email varchar(255) NOT NULL,
+        bio TEXT NOT NULL,
         interests TEXT NOT NULL
       )
       `
@@ -63,7 +63,7 @@ export const createUsersTable = async() => {
 export const dropUserTable = async () => {
   try {
     await db.queryAsync(
-      `DROP TABLE IF EXISTS Users`
+      `DROP TABLE IF EXISTS users`
     );
     success('successfully dropped users table');
   } catch (err) {

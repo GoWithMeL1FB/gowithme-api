@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "Handles api for gowithme app",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "start:rest-server": "cd rest-server && npm run start",
+    "setup:rest-server": "cd rest-server && npm install",
+    "db:setup:rest-server": "cd rest-server && babel-node src/config/database/setup.js",
+    "buildEnv": "node bin/buildEnv.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GoWithMeL1FB/gowithme-api.git"
@@ -15,6 +20,13 @@
   },
   "homepage": "https://github.com/GoWithMeL1FB/gowithme-api#readme",
   "dependencies": {
-    "bluebird": "^3.5.1"
+    "lodash": "^4.17.4",
+    "mongoose": "^5.0.3",
+    "mysql": "^2.15.0",
+    "node": "^9.4.0",
+    "npm-run-all": "^4.1.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
   }
 }

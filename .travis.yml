@@ -4,13 +4,15 @@ cache:
   directories:
     - node_modules
 before_script:
-  - sudo apt-get -qq update # qq for less output
-  - cd rest-server
-  - yarn start && stop 10
+  # - sudo apt-get -qq update # qq for less output
 install:
   - npm install
+  - npm run buildEnv
+  - npm run setup:rest-server
+  - npm run db:setup:rest-server
 script:
-  # - yarn build && stop 10
+  - npm run start:rest-server &
+  - sleep 10
   # - zip -r latest *
   # - mkdir -p dpl_cd_upload_ui
   # - mv latest.zip dpl_cd_upload_ui/latest.zip

@@ -1,16 +1,16 @@
-const Users = require('./users');
-const categories = require('./categories');
-//const dateCourse = require('./dateCourse');
-//const events = require('./events');
-const rating = require('./rating');
-const dataCourseEvents = require('./dateCourseEvents');
-const comments = require('./comments');
-const categoryJoin = require('./categoryJoin');
+import users from './users';
+import categories from './categories';
+// import dateCourse from './dateCourse';
+// import events from './events';
+import rating from './rating';
+import dateCourseEvents from './dateCourseEvents';
+import comments from './comments';
+import categoryJoin from './categoryJoin';
 
 console.log("seed page");
 
 const seedTables = () =>{
-    Users.bulkCreate([
+    users.bulkCreate([
       {
         id: 1,
         username: "Jon",
@@ -90,7 +90,7 @@ categories.bulkCreate([
 //   console.error('events seed failed', err);
 // });
 
-// dataCourseEvents.bulkCreate([
+// dateCourseEvents.bulkCreate([
 //   {
 //     dataCourse_id: 1,
 //     event_id: 1

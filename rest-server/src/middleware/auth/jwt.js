@@ -1,13 +1,13 @@
 import { sign, verify } from 'jsonwebtoken';
 
-export const generateToken = (id, username) => {
+export const generateToken = (username, email) => {
 
   const token = {};
 
   token.accessToken = sign({
     exp: Math.floor(Date.now() / 1000) + (60 * 60), //expires in 1hour
     username,
-    id
+    email
   }, process.env.TOKEN_SECRET);
 
   return token;

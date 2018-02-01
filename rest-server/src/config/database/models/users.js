@@ -1,7 +1,7 @@
-const Sequelize = require("sequelize");
-const db = require('../index.js');
+import Sequelize from 'sequelize';
+import db from '../index';
 
-module.exports = db.define('Users', {
+module.exports = db.define('users', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
@@ -19,7 +19,7 @@ module.exports = db.define('Users', {
   birthday: {
     type: Sequelize.INTEGER
   },
-  Bio: {
+  bio: {
     type: Sequelize.STRING
   }
 });
