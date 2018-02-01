@@ -9,6 +9,8 @@ before_script:
   - npm run buildEnv
   - npm run setup:rest-server
   - npm run db:setup:rest-server
+before_install:
+  - mysql -u gowithme -e "SET PASSWORD FOR 'gowithme'@'localhost' = PASSWORD('password')"
 install:
   - npm install
 script:
