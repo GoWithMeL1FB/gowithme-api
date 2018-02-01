@@ -8,7 +8,7 @@
     "setup:rest-server": "cd rest-server && npm install",
     "db:setup:rest-server": "cd rest-server && babel-node src/config/database/setup.js",
     "buildEnv": "node bin/buildEnv.js",
-    "changePass": "cd rest-server mysql -u root -e 'SET PASSWORD FOR 'gowithme'@'localhost' = PASSWORD('password')'"
+    "changePass": "cd rest-server && mysql -u root -e 'CREATE USER 'gowithme'@'localhost' IDENTIFIED BY 'gowithme';' && mysql -u root -e 'SET PASSWORD FOR 'gowithme'@'localhost' = PASSWORD('password');' && mysql -u root -e 'GRANT ALL ON stockmarket.* TO 'makler'@'localhost';'"
   },
   "repository": {
     "type": "git",
