@@ -7,7 +7,7 @@ import Promise from 'bluebird';
 const db = new Sequelize('GoWithMe', 'gowithme', 'password', {
   host: 'localhost',
   dialect: 'mysql',
-   port: 3306,
+  // port: 3306,
   logging: false
 });
 
