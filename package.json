@@ -8,7 +8,7 @@
     "setup:rest-server": "cd rest-server && npm install",
     "db:setup:rest-server": "cd rest-server && babel-node src/config/database/setup.js",
     "buildEnv": "node bin/buildEnv.js",
-    "changePass": "cd rest-server && mysql -u root -e 'ALTER USER 'gowithme'@'localhost' IDENTIFIED BY 'password'"
+    "changePass": "cd rest-server && mysql -u root -e 'ALTER USER 'gowithme'@'localhost' IDENTIFIED BY 'password''"
   },
   "repository": {
     "type": "git",
