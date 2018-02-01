@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:rest-server": "cd rest-server && npm run start",
-    "setup:rest-server": "cd rest-server && npm start",
+    "setup:rest-server": "cd rest-server && npm install",
     "db:setup:rest-server": "cd rest-server && babel-node src/config/database/setup.js",
     "buildEnv": "node bin/buildEnv.js"
   },
