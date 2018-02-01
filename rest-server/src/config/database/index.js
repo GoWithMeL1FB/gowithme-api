@@ -4,7 +4,7 @@ import Sequelize from 'sequelize';
 import Promise from 'bluebird';
 // const seedTables = require('./models/seed');
 
-const db = new Sequelize('GoWithMe', 'gowithme', 'password', {
+const db = new Sequelize('GoWithMe', 'gowithme', process.env.LOCAL_PASSWORD, {
   host: 'localhost',
   dialect: 'mysql',
    port: 3306,
