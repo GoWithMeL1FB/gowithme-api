@@ -14,7 +14,11 @@ const envBuild = {
     'AWS_PASSWORD=',
     'AWS_PORT=',
     'SALT_ROUNDS=10',
-    'TOKEN_SECRET=gowithme'
+    'TOKEN_SECRET=gowithme',
+    'FBAPP_ID=$FBAPP_ID',
+    'FBAPP_SECRET=$FBAPP_SECRET',
+    'GOOGLE_ID=$GOOGLE_ID',
+    'GOOGLE_SECRET=$GOOGLE_SECRET'
   ]
 };
 
