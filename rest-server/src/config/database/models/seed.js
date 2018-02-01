@@ -1,4 +1,4 @@
-import Users from './users';
+import users from './users';
 import categories from './categories';
 // import dateCourse from './dateCourse';
 // import events from './events';
