@@ -6,11 +6,11 @@ cache:
     - node_modules
 before_script:
   # - sudo apt-get -qq update # qq for less output
+  - npm run changePass
 before_install:
   - npm run buildEnv
   - npm run setup:rest-server
   - npm run db:setup:rest-server
-  - npm run changePass
 install:
   - npm install
 script:
