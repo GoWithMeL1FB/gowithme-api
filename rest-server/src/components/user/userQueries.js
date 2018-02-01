@@ -1,5 +1,5 @@
 import db from '../../config/database';
-import { getAllUserDataHelper, getUserDataHelper } from './userSQLHelpers';
+import { getAllUserDataHelper, getUserDataHelper, updateUserDataHelper} from './userSQLHelpers';
 import { success, error, warning } from '../../lib/logger';
 
 export const userQuery = async () => {
@@ -14,11 +14,20 @@ export const userQuery = async () => {
 
 export const getUserInfoQuery = async (body) => {
   try {
-    console.log('user query id:', body)
     const queryString = getUserDataHelper(body);
     const usersData = await db.query(queryString);
     return usersData[0];
   } catch (err) {
     error('could not query user\'s info', err)
+  }
+}
+
+export const updateUserInfoQuery = async (body) => {
+  try {
+    const queryString = updateUserDataHelper(body);
+    const updatedInfo = await db.query(queryString);
+    console.log('updated info - qyeryies:', updatedInfo);
+  } catch (err) {
+    error('could not query updated info', err)
   }
 }

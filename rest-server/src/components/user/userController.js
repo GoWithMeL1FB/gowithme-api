@@ -1,5 +1,5 @@
 import db from '../../config/database';
-import { userQuery, getUserInfoQuery } from './userQueries';
+import { userQuery, getUserInfoQuery, updateUserInfoQuery } from './userQueries';
 import { success, error, warning } from '../../lib/logger';
 import users from '../../config/database/models/users';
 
@@ -20,5 +20,14 @@ export const getUserInfo = async (req, res) => {
     res.status(200).send(userInfo);
   } catch (err) {
     error('could not fetch user\'s data', err)
+  }
+}
+
+export const updateUserInfo = async (req, res) => {
+  try {
+    const update = await updateUserInfoQuery(req.body);
+    success('user\'s info was updated');
+  } catch (err) {
+    error('was not able to update user info');
   }
 }

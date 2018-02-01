@@ -1,32 +1,31 @@
 import db from '../../config/database';
 import axios from 'axios';
-import { signUpHelper, loginHelper } from './authSQLHelpers';
+import { signUpHelper, loginHelper, storePasswordHelper, getUserIDHelper } from './authSQLHelpers';
 import { success, error, warning } from '../../lib/logger';
+import { getUserDataHelper } from '../user/userSQLHelpers';
 
-// fix queryAsync
 export const signUpQuery = async (body) => {
   try {
-    const queryString = signUpHelper(body);
-    db.queryAsync(queryString)
-      // cannot catch errors here... wtf
-      // .then((res) => {
-      //   if (!res) { warning('insert err')}
-      //   warning('signUpQuery - inserted data ');
-      // })
-      // .catch((err) => {
-      //   warning('Validation Err', err);
-      // })
-    // db.release();
+    const postUserData = signUpHelper(body);
+    const getUserId = getUserIDHelper(body);
+
+    db.query(postUserData);
+    const userID = await db.query(getUserId);
+    const postUserPassword = storePasswordHelper(body, userID[0][0]);
+
+    console.log('userid', userID[0][0], 'body', body, 'userpw', postUserPassword);
+
+    db.query(postUserPassword);
   } catch (err) {
-    error('signUpQuery - error= ', err);
+    warning('signUpQuery - error= ', err);
     throw new Error(err);
   }
 };
-// fix queryAsync
+
 export const loginQuery = async (body) => {
   try {
     const queryString = loginHelper(body);
-    const data = await db.queryAsync(queryString);
+    const data = await db.query(queryString);
     // db.end();
     success('loginQuery - successfully retrieved data ', data);
     return data;

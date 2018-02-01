@@ -1,4 +1,5 @@
 import Sequelize from 'sequelize';
+import { success, error } from '../../lib/logger';
 
 // import Promise from 'bluebird';
 import Promise from 'bluebird';
@@ -7,7 +8,7 @@ import Promise from 'bluebird';
 const db = new Sequelize('GoWithMe', 'gowithme', 'password', {
   host: 'localhost',
   dialect: 'mysql',
-  // port: 3306,
+  port: 3306,
   logging: false
 });
 
@@ -17,11 +18,11 @@ db.authenticate()
   .then(() =>{
     //run seed function
     // seedTables();
-    console.log('Connected to database GoWithMe!');
+    success('Connected to database GoWithMe!');
 
   })
   .catch( (err) => {
-    console.log('Attempt to start database failed: ', err);
+    error('Attempt to start database failed: ', err);
   });
 
 Promise.promisifyAll(db);

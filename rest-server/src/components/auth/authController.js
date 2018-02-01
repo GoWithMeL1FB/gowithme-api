@@ -11,6 +11,7 @@ export const signUpController = async (req, res) => {
     await signUpQuery(req.body);
     success('signUpController - signed up with token ');
     delete req.body.password
+
     const token = await generateToken(req.body.email, req.body.username);
     req.body.token = token;
     return res.append('authorization', JSON.stringify(token)).status(200).send(req.body);

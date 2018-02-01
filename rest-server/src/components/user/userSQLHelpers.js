@@ -1,14 +1,14 @@
-export const updateUserDataHelper = ({ id, birthday, email, username, password }) => {
+export const updateUserDataHelper = ({ id, birthday, bio }) => {
   return `
     UPDATE users
-      SET  email = ${email}, username = ${username}, password = ${password}
+      SET  bio = ${bio}, birthday = ${birthday}
       WHERE id = ${id};
   `
 }
 
 export const getUserDataHelper = ({ id }) => {
   return `
-    SELECT email, username, password, birthday, bio
+    SELECT email, username, birthday, bio
     FROM users
     WHERE id = ${id};
   `
