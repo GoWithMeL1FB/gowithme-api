@@ -44,7 +44,7 @@ export const createUsersTable = async() => {
   try {
   await  db.queryAsync(
       `
-      CREATE TABLE IF NOT EXISTS Users (
+      CREATE TABLE IF NOT EXISTS users (
         id int NOT NULL,
         username varchar(255) NOT NULL UNIQUE,
         password varchar(255) NOT NULL,
