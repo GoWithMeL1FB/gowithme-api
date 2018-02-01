@@ -8,7 +8,7 @@ import {
 export const createDatabase = async () => {
   try {
     await db.queryAsync(
-      `CREATE DATABASE gowithme`
+      `CREATE DATABASE GoWithMe`
     );
     success('successfully created database gowithme');
   } catch (err) {
@@ -20,7 +20,7 @@ export const createDatabase = async () => {
 export const dropDatabase = async () => {
   try {
     await db.queryAsync(
-      `DROP DATABASE IF EXISTS gowithme`
+      `DROP DATABASE IF EXISTS GoWithMe`
     );
     success('successfully dropped database gowithme');
   } catch (err) {
@@ -31,7 +31,7 @@ export const dropDatabase = async () => {
 export const useDatabase = async () => {
   try {
     await db.queryAsync(
-      `USE IF EXISTS gowithme`
+      `USE IF EXISTS GoWithMe`
     );
     success('successfully using database gowithme');
   } catch (err) {
