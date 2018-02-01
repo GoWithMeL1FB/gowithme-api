@@ -73,7 +73,7 @@ const syncTables = async () => {
    // await dataCourseEvents.sync();
     await comments.sync();
     await categoryJoin.sync();
-    await seedTables();
+    // await seedTables();
     success('successfully created users table ');
   } catch (err) {
     error('error creating database ', err);
