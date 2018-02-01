@@ -5,11 +5,11 @@ cache:
     - node_modules
 before_script:
   # - sudo apt-get -qq update # qq for less output
-install:
-  - npm install
   - npm run buildEnv
   - npm run setup:rest-server
   - npm run db:setup:rest-server
+install:
+  - npm install
 script:
   - npm run start:rest-server &
   - sleep 10
