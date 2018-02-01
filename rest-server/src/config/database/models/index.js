@@ -1,4 +1,4 @@
-import Users from './users';
+import users from './users';
 import categories from './categories';
 import dateCourse from './dateCourse';
 import events from './events';
@@ -61,7 +61,7 @@ import { success, error, warning } from '../../../lib/logger';
 //     error('failed to syn users table: ', err)}
 //   )
 
-module.exports = { Users, categories, rating, comments, categoryJoin };
+// module.exports = { users, categories, rating, comments, categoryJoin };
 //promisafiy sync tables
 const syncTables = async () => {
   try {
