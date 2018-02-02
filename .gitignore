@@ -1,4 +1,18 @@
-*dotenv environment variables
+# dotenv environment variables
 .env
 .DS_Store
-node_modules
+
+# dependency directories
+node_modules/
+package-lock.json
+
+.npm
+
+# eslint cache
+.eslintcache
+
+# Output of 'npm pack'
+*.tgz
+
+# yarn integrity file
+.yarn-integrity
