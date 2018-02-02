@@ -11,19 +11,27 @@ export const getUserIDHelper = ({ username, email }) => {
     FROM users
     WHERE username = '${username}' AND email = '${email}'
   `
-}
+};
 
 export const storePasswordHelper = ({password}, {id}) => {
   return `
     INSERT INTO credentials ( hashedPassword, user_ID )
     VALUES ('${password}', '${id}')
   `
-}
+};
 
 export const loginHelper = ({ username }) => {
   return `
-    SELECT id, email, username, password
+    SELECT id, username, email
     FROM users
     WHERE username = '${username}'
   `;
 };
+
+export const findDbPasswordHelper = ({ id }) => {
+  return `
+    SELECT hashedPassword
+    FROM credentials
+    WHERE user_ID = '${id}'
+  `
+}
