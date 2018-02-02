@@ -37,7 +37,7 @@ export const loginQuery = async (body) => {
 
     const password = await db.query(passwordQuery);
     success('loginQuery - successfully retrieved data');
-    const userInfo = Object.assign(data[0][0], password[0][0])
+    const userInfo = Object.assign(data[0][0], password[0][0]);
 
     return userInfo;
     // db.end();

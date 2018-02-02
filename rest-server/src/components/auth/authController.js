@@ -11,13 +11,15 @@ export const signUpController = async (req, res) => {
     req.body.password = await hashPW(req.body.password);
     await signUpQuery(req.body);
     success('signUpController - signed up with token ');
-    delete req.body.password
+    delete req.body.password;
 
     const token = await generateToken(req.body.email, req.body.username);
     req.body.token = token;
-    return res.append('authorization', JSON.stringify(token)).status(200).send(req.body);
+    return res.append('authorization', JSON.stringify(token))
+              .status(200)
+              .send(req.body);
   } catch (err) {
-    error('error', err)
+    error('error', err);
   }
 }
 
@@ -25,7 +27,7 @@ export const loginController = async (req, res) => {
   try {
     // retrieves user info and hashed password
     const verification = await loginQuery(req.body);
-    const { username, email, hashedPassword } = verification
+    const { username, email, hashedPassword } = verification;
 
     // verify that password is correct
     const isVerified = await PWVerification(req.body.password, hashedPassword);
@@ -33,16 +35,16 @@ export const loginController = async (req, res) => {
 
     // if verified, send back info with token attatched
     if (isVerified) {
-      const token = await generateToken(username, email)
+      const token = await generateToken(username, email);
       verification.token = token;
-      success('loginController - user logged in with token')
+      success('loginController - user logged in with token');
 
       return res.status(200)
                 .append('authorization', JSON.stringify(token))
                 .send(verification);
     } else {
-      warning('user failed to login with correct credentials')
-      res.status(500).send('password or username does not match')
+      warning('user failed to login with correct credentials');
+      res.status(500).send('password or username does not match');
     }
   } catch (err) {
     error('error while trying to login', err);

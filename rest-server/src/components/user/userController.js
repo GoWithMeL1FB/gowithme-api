@@ -19,7 +19,7 @@ export const getUserInfo = async (req, res) => {
     success('user\'s data fetched');
     res.status(200).send(userInfo);
   } catch (err) {
-    error('could not fetch user\'s data', err)
+    error('could not fetch user\'s data', err);
   }
 }
 

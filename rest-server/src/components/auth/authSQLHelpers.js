@@ -10,7 +10,7 @@ export const getUserIDHelper = ({ username, email }) => {
     SELECT id
     FROM users
     WHERE username = '${username}' AND email = '${email}'
-  `
+  `;
 };
 
 export const storePasswordHelper = ({password}, {id}) => {
@@ -33,5 +33,5 @@ export const findDbPasswordHelper = ({ id }) => {
     SELECT hashedPassword
     FROM credentials
     WHERE user_ID = '${id}'
-  `
+  `;
 }

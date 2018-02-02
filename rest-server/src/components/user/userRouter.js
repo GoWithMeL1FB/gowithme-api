@@ -7,6 +7,6 @@ router.route('/getAllUsers')
 router.route('/fetchUsersInfo/:id')
   .get(getUserInfo);
 router.route('/updateUser')
-  .put(updateUserInfo)
+  .put(updateUserInfo);
 
 export default router;
