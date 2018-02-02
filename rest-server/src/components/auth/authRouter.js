@@ -28,6 +28,7 @@ router.route('/facebook/callback',
     res.redirect('/');
   });
 
+// template for passport auth
 // router.route('/login')
 //   .post(validate(formValidation.login), passport.authenticate('local', { session: false}), loginController);
 

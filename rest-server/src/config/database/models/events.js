@@ -24,4 +24,3 @@ module.exports = db.define('events', {
   }
 
 });
-//module.exports = events;
