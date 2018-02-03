@@ -1,11 +1,6 @@
 const mongoose = require('mongoose');
-// defining a schema
-const { Schema } = mongoose.Schema;
 
-const EventSchema = new Schema({
-  _id: {
-    type: Schema.Types.ObjectId,
-  },
+const EventSchema = new mongoose.Schema({
   title: {
     type: String,
     required: [true, 'Event must have a title'],
@@ -21,7 +16,7 @@ const EventSchema = new Schema({
     required: [true, 'Give the event a location'],
     trim: true,
   },
-  catetory: {
+  category: {
     type: String,
     required: [true, 'Give the event a category'],
     // specifies set of allowed values for the field
@@ -33,5 +28,6 @@ const EventSchema = new Schema({
   },
 });
 
-// compile model from schema
-export const Events = mongoose.model('Events', EventSchema);
+// compile model from schema and export
+const Event = mongoose.model('Event', EventSchema);
+export default Event;

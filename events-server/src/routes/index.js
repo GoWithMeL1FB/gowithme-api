@@ -1,9 +1,9 @@
 import express from 'express';
 
-// import events from '../components/';
+import eventRouter from '../components/event/eventRouter';
 
 const router = express.Router();
 
-// router.use('/events', eventsRouter);
+router.use('/events', eventRouter);
 
 export default router;

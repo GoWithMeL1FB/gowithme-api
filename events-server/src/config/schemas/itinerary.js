@@ -1,11 +1,6 @@
 const mongoose = require('mongoose');
 
-const { Schema } = mongoose.Schema;
-
-const ItinerarySchema = new Schema({
-  _id: {
-    type: Schema.Types.ObjectId,
-  },
+const ItinerarySchema = new mongoose.Schema({
   title: {
     type: String,
     required: [true, 'give itinerary a name'],
@@ -17,7 +12,7 @@ const ItinerarySchema = new Schema({
   events: [
     {
       _eventId: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'EventInstance',
         required: [true],
       },
@@ -25,19 +20,19 @@ const ItinerarySchema = new Schema({
       description: String,
       time: {
         date: {
-          type: Schema.Types.ObjectId,
+          type: mongoose.Schema.Types.ObjectId,
           ref: 'Itinerary',
         },
         start: {
-          type: Schema.Types.ObjectId,
+          type: mongoose.Schema.Types.ObjectId,
           ref: 'Itinerary',
         },
         end: {
-          type: Schema.Types.ObjectId,
+          type: mongoose.Schema.Types.ObjectId,
           ref: 'Itinerary',
         },
         duration: {
-          type: Schema.Types.ObjectId,
+          type: mongoose.Schema.Types.ObjectId,
           ref: 'Itinerary',
         },
       },
