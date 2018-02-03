@@ -1,18 +1,15 @@
 import http from 'http';
-import SocketIO from 'socket.io';
-// import { each } from 'lodash';
-
-// import Rooms from './rooms';
-// import clientEvents from './clientEvents';
+// import mongoose from 'mongoose';
+import App from './config/express';
 import { success } from './lib/logger';
+import './config/mongo';
 
-const server = http.createServer();
-const io = SocketIO(server);
-// const events = new Events(io);
+const app = App.express;
 
-io.on('connection', () => {
-  console.log('hello');
-});
-
+const server = http.createServer(app);
 const PORT = process.env.PORT || 3031;
-server.listen(PORT, () => success(`event server listening on port ${PORT}`));
+
+server.listen(PORT, (err) => {
+  if (err) throw new Error('failed to start evevnts server');
+  success('succeessfully connected to server on port', PORT);
+});
