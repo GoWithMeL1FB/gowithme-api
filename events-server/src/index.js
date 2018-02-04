@@ -5,14 +5,7 @@ import { success } from './lib/logger';
 import './config/mongo';
 
 const app = App.express;
-
 const server = http.createServer(app);
-const io = SocketIO(server);
-const events = new Events(io);
-
-io.on('connection', () => {
-
-});
 
 const PORT = process.env.PORT || 3031;
 server.listen(PORT, (err) => {

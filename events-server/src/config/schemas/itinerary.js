@@ -14,26 +14,38 @@ const ItinerarySchema = new mongoose.Schema({
       _eventId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'EventInstance',
-        required: [true],
+        default: 'no reference',
       },
-      title: String,
-      description: String,
+      title: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'EventInstance',
+        default: 'no reference',
+      },
+      description: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'EventInstance',
+        default: 'no reference',
+      },
       time: {
         date: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: 'Itinerary',
+          ref: 'EventInstance',
+          default: 'no reference',
         },
         start: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: 'Itinerary',
+          ref: 'EventInstance',
+          default: 'no reference',
         },
         end: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: 'Itinerary',
+          ref: 'EventInstance',
+          default: 'no reference',
         },
         duration: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: 'Itinerary',
+          ref: 'EventInstance',
+          default: 'no reference',
         },
       },
       meta: {
@@ -55,4 +67,5 @@ const ItinerarySchema = new mongoose.Schema({
   ],
 });
 
-export const Itinerary = mongoose.model('Itinerary', ItinerarySchema);
+const Itinerary = mongoose.model('Itinerary', ItinerarySchema);
+export default Itinerary;
