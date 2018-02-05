@@ -21,7 +21,7 @@ export const signUpQuery = async (body) => {
     const userID = await db.query(getUserId);
 
     // store password with id
-    const postUserPassword = storePasswordHelper(body, userID[0][0]);
+    const postUserPassword = await storePasswordHelper(body, userID[0][0]);
     db.query(postUserPassword);
   } catch (err) {
     warning('signUpQuery - error= ', err);
