@@ -1,4 +1,4 @@
-import { createEventQuery } from './eventQueries';
+import { createEventQuery, getEventInfo } from './eventQueries';
 import Itinerary from '../../config/schemas/itinerary';
 // import Events from '../../config/schemas/event';
 import { success, error } from '../../lib/logger';
@@ -30,6 +30,19 @@ export const createItinerary = async (req, res) => {
     return res.status(200).send(newItinerary);
   } catch (err) {
     error('itinerary was not crated', err);
+    res.status(403).send(err.message);
+  }
+};
+
+export const addEvent = async (req, res) => {
+  try {
+    const { eventId, itinearyId, owner } = req.body;
+    const eventInfo = await getEventInfo(eventId);
+    console.log('Controller - event info: ', eventInfo);
+    success('Controller - event added to itinerary');
+    return res.status(200).send('OK');
+  } catch (err) {
+    error('failed to add event to itinerary');
     res.status(403).send(err.message);
   }
 };

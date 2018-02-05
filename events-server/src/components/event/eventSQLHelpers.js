@@ -31,3 +31,7 @@ export const createEventInstanceHelper = ({
     _eventId: _id,
   })
 );
+
+export const getEventInfoHelper = ({ eventId }) => (
+
+);
