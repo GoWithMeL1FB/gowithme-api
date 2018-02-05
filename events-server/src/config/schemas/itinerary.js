@@ -12,40 +12,26 @@ const ItinerarySchema = new mongoose.Schema({
   events: [
     {
       _eventId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'EventInstance',
-        default: 'no reference',
+        type: String,
       },
       title: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'EventInstance',
-        default: 'no reference',
+        type: String,
       },
       description: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'EventInstance',
-        default: 'no reference',
+        type: String,
       },
       time: {
         date: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'EventInstance',
-          default: 'no reference',
+          type: String,
         },
         start: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'EventInstance',
-          default: 'no reference',
+          type: String,
         },
         end: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'EventInstance',
-          default: 'no reference',
+          type: String,
         },
         duration: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'EventInstance',
-          default: 'no reference',
+          type: String,
         },
       },
       meta: {

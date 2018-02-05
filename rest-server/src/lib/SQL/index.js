@@ -188,7 +188,7 @@ export const createRatingTable = async() => {
 
 export const createCredentialsTable = async () => {
   try {
-    await db.queryAsync(
+    await db.query(
       `
       CREATE TABLE credentials
       (
