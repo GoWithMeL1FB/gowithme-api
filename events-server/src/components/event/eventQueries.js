@@ -1,4 +1,4 @@
-import { createEventHelper, createEventInstanceHelper, getEventInfoHelper } from './eventSQLHelpers';
+import { createEventHelper, createEventInstanceHelper } from './eventSQLHelpers';
 import { success, error } from '../../lib/logger';
 
 export const createEventQuery = async (body) => {
@@ -21,13 +21,3 @@ export const createEventQuery = async (body) => {
   }
 };
 
-export const getEventInfo = async (body) => {
-  try {
-    const eventInfo = await getEventInfoHelper(body);
-    success('Queries - queried event info');
-    return eventInfo;
-  } catch (err) {
-    error('Queries - could not query db for info \n', err);
-    return err.message;
-  }
-};
