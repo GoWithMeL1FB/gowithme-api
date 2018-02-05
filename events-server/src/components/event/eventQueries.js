@@ -1,4 +1,4 @@
-import { createEventHelper, createEventInstanceHelper } from './eventSQLHelpers';
+import { createEventHelper, createEventInstanceHelper, getEventInfoHelper } from './eventSQLHelpers';
 import { success, error } from '../../lib/logger';
 
 export const createEventQuery = async (body) => {
@@ -13,10 +13,21 @@ export const createEventQuery = async (body) => {
     const uEvent = await userEvent.save();
 
     // return users' event that was saved
-    success('Quereis - event added');
+    success('Queries - event added');
     return uEvent;
   } catch (err) {
     error('Queries - did not query DB\n', err);
+    return err.message;
+  }
+};
+
+export const getEventInfo = async (body) => {
+  try {
+    const eventInfo = await getEventInfoHelper(body);
+    success('Queries - queried event info');
+    return eventInfo;
+  } catch (err) {
+    error('Queries - could not query db for info \n', err);
     return err.message;
   }
 };

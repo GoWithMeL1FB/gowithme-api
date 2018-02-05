@@ -7,6 +7,7 @@ import { read } from 'fs';
 
 export const signUpController = async (req, res) => {
   try {
+    console.log('Queries - body: ', req.body);
     req.body.password = await hashPW(req.body.password);
     await signUpQuery(req.body);
     success('signUpController - signed up with token ');

@@ -1,7 +1,7 @@
-export const signUpHelper = ({ email, username, birthday, bio}) => {
+export const signUpHelper = ({ email, username, birthday, bio, firstname, lastname }) => {
   return `
-    INSERT INTO users (email, username, birthday, bio)
-    VALUES ('${email}', '${username}', '${birthday}', '${bio}')
+    INSERT INTO users (email, username, birthday, bio, firstname, lastname)
+    VALUES ('${email}', '${username}', '${birthday}', '${bio}', '${firstname}', '${lastname}')
   `;
 };
 
