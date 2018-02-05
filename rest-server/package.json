@@ -9,6 +9,7 @@
   "scripts": {
     "test": "test",
     "start": "nodemon bin/entry.js",
+    "db:setup": "babel-node src/config/database/setup.js",
     "seed": "node src/config/database/models/seed.js "
   },
   "author": "",

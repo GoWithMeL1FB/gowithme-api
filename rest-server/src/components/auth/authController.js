@@ -3,7 +3,6 @@ import { signUpQuery, loginQuery } from './authQueries';
 import { success, error, warning } from '../../lib/logger';
 import { generateToken } from '../../middleware/auth/jwt';
 import { hashPW, PWVerification } from '../../middleware/auth/bcrypt';
-import users from '../../config/database/models/users';
 import { read } from 'fs';
 
 export const signUpController = async (req, res) => {
