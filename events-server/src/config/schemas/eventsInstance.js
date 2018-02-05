@@ -2,16 +2,13 @@ const mongoose = require('mongoose');
 
 const EventInstanceSchema = new mongoose.Schema({
   title: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Event',
+    type: String,
   },
   description: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Event',
+    type: String,
   },
   category: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Event',
+    type: String,
   },
   time: {
     date: {
@@ -28,18 +25,16 @@ const EventInstanceSchema = new mongoose.Schema({
       type: String,
     },
     attendees: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Event',
+      type: String,
     },
   },
   _itineraryId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Itinerary',
+    type: String,
   },
   _eventId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Events',
+    type: String,
   },
 });
 
-export const EventInstance = mongoose.model('EventInstance', EventInstanceSchema);
+const EventInstance = mongoose.model('EventInstance', EventInstanceSchema);
+export default EventInstance;

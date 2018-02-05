@@ -1,6 +1,5 @@
+import mongoose from 'mongoose';
 import { success } from '../../lib/logger';
-
-const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost:27017/gowithme');
 // what does this do??
