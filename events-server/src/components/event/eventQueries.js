@@ -6,7 +6,6 @@ export const createEventQuery = async (body) => {
     // save generic event to db
     const sharedEvent = createEventHelper(body);
     const data = await sharedEvent.save();
-    console.log('data: ', data);
 
     // use data._id to save event id to users' event
     const userEvent = createEventInstanceHelper(body, data);
