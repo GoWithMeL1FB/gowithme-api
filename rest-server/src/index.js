@@ -1,9 +1,9 @@
-import http from 'http';
+const http = require('http');
 
-import App from './config/express';
-import { success } from '../src/lib/logger';
-import './config/database';
-import './config/database/models';
+const App = require('./config/express');
+const success = require('../src/lib/logger');
+require('./config/database');
+require('./config/database/models');
 //const seedTables = require("./config/database/models/seed");
 
 const app = App.express;

@@ -1,14 +1,13 @@
-import express from 'express';
-import validate from 'express-validation';
-import passport from 'passport';
+const signUpController = require('./authController');
+const loginController = require('./authController');
+const formValidation = require('../../middleware/validation/request-validation');
+const passportFacebook = require('../../middleware/validation/socialApps/facebook');
+const passportGoogle = require('../../middleware/validation/socialApps/google');
+require('../../middleware/validation/passport');
 
-import { signUpController, loginController } from './authController';
-import formValidation from '../../middleware/validation/request-validation';
-import '../../middleware/validation/passport';
-
-import passportFacebook from '../../middleware/validation/socialApps/facebook';
-import passportGoogle from '../../middleware/validation/socialApps/google';
-
+const express = require('express');
+const validate = require('express-validation');
+const passport = require('passport');
 
 const router = express.Router();
 
@@ -32,4 +31,4 @@ router.route('/facebook/callback',
 // router.route('/login')
 //   .post(validate(formValidation.login), passport.authenticate('local', { session: false}), loginController);
 
-export default router;
+module.exports = router;

@@ -7,7 +7,7 @@
     "rest-server": "entry.js"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --silent --forceExit",
     "start": "nodemon bin/entry.js",
     "db:setup": "babel-node src/config/database/setup.js",
     "seed": "node src/config/database/models/seed.js "
@@ -40,17 +40,20 @@
     "sequelize": "^4.32.2"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-jest": "^22.1.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
     "eslint": "^4.16.0",
+    "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.7.0",
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-react": "^7.6.1",
     "eslint-plugin-security": "^1.4.0",
     "jest": "^22.1.4",
-    "nodemon": "^1.14.11",
+    "regenerator-runtime": "^0.11.1",
     "supertest": "^3.0.0"
   }
 }
