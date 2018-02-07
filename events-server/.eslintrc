@@ -1,10 +1,27 @@
 {
-  "extends": "airbnb-base",
+  "extends": [
+    "airbnb-base",
+    "plugin:security/recommended",
+    "eslint:recommended",
+    "plugin:jest/recommended"
+    ],
+  "plugins": [
+    "node",
+    "security",
+    "import",
+    "jest"
+    ],
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "sourceType": "module"
+    },
   "rules": {
     "no-console": "off",
     "strict": ["error", "global"],
     "curly": "warn",
     "import/prefer-default-export": 0,
+    "import/no-named-as-default": 0,
+    "import/no-named-as-default-member": 0,
     "no-await-in-loop": "off"
   }
 }

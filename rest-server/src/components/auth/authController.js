@@ -3,7 +3,7 @@ import { signUpQuery, loginQuery } from './authQueries';
 import { success, error, warning } from '../../lib/logger';
 import { generateToken } from '../../middleware/auth/jwt';
 import { hashPW, PWVerification } from '../../middleware/auth/bcrypt';
-import { read } from 'fs';
+// import { read } from 'fs';
 
 export const signUpController = async (req, res) => {
   try {
@@ -14,9 +14,7 @@ export const signUpController = async (req, res) => {
 
     const token = await generateToken(req.body.email, req.body.username);
     req.body.token = token;
-    return res.append('authorization', JSON.stringify(token))
-              .status(200)
-              .send(req.body);
+    return res.status(200).send(req.body);
   } catch (err) {
     error('error', err);
   }
@@ -40,7 +38,6 @@ export const loginController = async (req, res) => {
       success('loginController - user logged in with token');
 
       return res.status(200)
-                .append('authorization', JSON.stringify(token))
                 .send(verification);
     } else {
       warning('user failed to login with correct credentials');

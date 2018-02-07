@@ -1,7 +1,7 @@
-const http = require('http');
+import http from 'http';
+import App from './config/express';
+import { success } from '../src/lib/logger';
 
-const App = require('./config/express');
-const success = require('../src/lib/logger');
 require('./config/database');
 require('./config/database/models');
 //const seedTables = require("./config/database/models/seed");
@@ -15,3 +15,5 @@ server.listen(PORT, (err) => {
   if (err) throw new Error;
   success('successfully connected to port:', PORT);
 });
+
+module.exports = app;

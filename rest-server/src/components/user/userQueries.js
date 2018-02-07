@@ -1,7 +1,8 @@
 import db from '../../config/database';
 import { getAllUserDataHelper, getUserDataHelper, updateUserDataHelper} from './userSQLHelpers';
-import { success, error, warning } from '../../lib/logger';
+import { success, error } from '../../lib/logger';
 
+// gets info of all users
 export const userQuery = async () => {
   try {
     const queryString = getAllUserDataHelper();
@@ -12,6 +13,7 @@ export const userQuery = async () => {
   }
 }
 
+// get logged in user's info
 export const getUserInfoQuery = async (body) => {
   try {
     const queryString = getUserDataHelper(body);
@@ -22,10 +24,12 @@ export const getUserInfoQuery = async (body) => {
   }
 }
 
+// update user's info
 export const updateUserInfoQuery = async (body) => {
   try {
     const queryString = updateUserDataHelper(body);
     const updatedInfo = await db.query(queryString);
+    return updatedInfo[0];
   } catch (err) {
     error('could not query updated info', err);
   }
