@@ -12,13 +12,14 @@
     "jest"
     ],
   "parserOptions": {
-    "ecmaVersion": 2017,
+    "ecmaVersion": 8,
     "sourceType": "module"
     },
   "rules": {
     "no-console": "off",
     "strict": ["error", "global"],
     "curly": "warn",
+    "semi": "warn",
     "import/prefer-default-export": 0,
     "import/no-named-as-default": 0,
     "import/no-named-as-default-member": 0,
