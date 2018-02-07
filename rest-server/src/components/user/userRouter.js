@@ -1,5 +1,6 @@
 import express from 'express';
 import { getAllUsers, getUserInfo, updateUserInfo } from './userController';
+
 const router = express.Router();
 
 router.route('/getAllUsers')

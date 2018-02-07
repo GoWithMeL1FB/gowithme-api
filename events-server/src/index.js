@@ -12,3 +12,5 @@ server.listen(PORT, (err) => {
   if (err) throw new Error('failed to start evevnts server');
   success('succeessfully connected to server on port', PORT);
 });
+
+module.exports = app;

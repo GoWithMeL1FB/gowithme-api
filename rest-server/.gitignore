@@ -6,3 +6,6 @@ node_modules
 
 # random ignores
 .DS_Store
+
+# test coverage
+coverage

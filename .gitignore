@@ -16,3 +16,6 @@ package-lock.json
 
 # yarn integrity file
 .yarn-integrity
+
+# tests
+__tests__

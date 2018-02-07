@@ -1,9 +1,9 @@
 import http from 'http';
-
 import App from './config/express';
 import { success } from '../src/lib/logger';
-import './config/database';
-import './config/database/models';
+
+require('./config/database');
+require('./config/database/models');
 //const seedTables = require("./config/database/models/seed");
 
 const app = App.express;
@@ -15,3 +15,5 @@ server.listen(PORT, (err) => {
   if (err) throw new Error;
   success('successfully connected to port:', PORT);
 });
+
+module.exports = app;
