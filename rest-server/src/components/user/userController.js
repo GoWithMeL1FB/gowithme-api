@@ -1,7 +1,6 @@
 import db from '../../config/database';
 import { userQuery, getUserInfoQuery, updateUserInfoQuery } from './userQueries';
-import { success, error, warning } from '../../lib/logger';
-import users from '../../config/database/models/users';
+import { success, error } from '../../lib/logger';
 
 export const getAllUsers = async (req, res) => {
   try {
@@ -27,6 +26,7 @@ export const updateUserInfo = async (req, res) => {
   try {
     const update = await updateUserInfoQuery(req.body);
     success('user\'s info was updated');
+    res.status(200).send(update.info);
   } catch (err) {
     error('was not able to update user info');
   }

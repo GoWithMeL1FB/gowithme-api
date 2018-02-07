@@ -1,13 +1,12 @@
-const signUpController = require('./authController');
-const loginController = require('./authController');
-const formValidation = require('../../middleware/validation/request-validation');
-const passportFacebook = require('../../middleware/validation/socialApps/facebook');
-const passportGoogle = require('../../middleware/validation/socialApps/google');
-require('../../middleware/validation/passport');
+import { signUpController, loginController } from './authController';
+import formValidation from '../../middleware/validation/request-validation';
+import passportFacebook from '../../middleware/validation/socialApps/facebook';
+// import passportGoogle from '../../middleware/validation/socialApps/google';
 
+require('../../middleware/validation/passport');
 const express = require('express');
 const validate = require('express-validation');
-const passport = require('passport');
+// const passport = require('passport');
 
 const router = express.Router();
 
@@ -17,18 +16,20 @@ router.route('/signup')
 router.route('/login')
   .post(validate(formValidation.login), loginController);
 
-router.route('/facebook',
-  passportFacebook.authenticate('facebook'));
+router.route('/test').post(signUpController);
 
-router.route('/facebook/callback',
-  passportFacebook.authenticate('facebook', { failureRedirect: '/login' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/');
-  });
+// router.route('/facebook',
+//   passportFacebook.authenticate('facebook'));
+
+// router.route('/facebook/callback',
+//   passportFacebook.authenticate('facebook', { failureRedirect: '/login' }),
+//   function(req, res) {
+//     // Successful authentication, redirect home.
+//     res.redirect('/');
+//   });
 
 // template for passport auth
 // router.route('/login')
 //   .post(validate(formValidation.login), passport.authenticate('local', { session: false}), loginController);
 
-module.exports = router;
+export default router;
