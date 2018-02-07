@@ -24,9 +24,9 @@ const EventInstanceSchema = new mongoose.Schema({
     duration: {
       type: String,
     },
-    attendees: {
-      type: String,
-    },
+  },
+  attendees: {
+    type: String,
   },
   _itineraryId: {
     type: String,

@@ -3,22 +3,22 @@ const mongoose = require('mongoose');
 const EventSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: [true, 'Event must have a title'],
+    required: [true, 'Event missing title'],
     trim: true,
   },
   description: {
     type: String,
-    required: [true, 'Give the event a description'],
+    required: [true, 'Event missing description'],
     trim: true,
   },
   location: {
     type: String,
-    required: [true, 'Give the event a location'],
+    required: [true, 'Event missing location'],
     trim: true,
   },
   category: {
     type: String,
-    required: [true, 'Give the event a category'],
+    required: [true, 'Event missing category'],
     // specifies set of allowed values for the field
     enum: ['eat', 'activity', 'visit'],
   },
