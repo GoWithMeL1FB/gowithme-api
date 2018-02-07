@@ -14,9 +14,9 @@ export const signUpController = async (req, res) => {
 
     const token = await generateToken(req.body.email, req.body.username);
     req.body.token = token;
-    return res.status(200).send(req.body);
+    return res.status(200).send(req.body.token);
   } catch (err) {
-    error('error', err);
+    error(err);
   }
 }
 

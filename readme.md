@@ -26,5 +26,5 @@ yarn db:setup:rest-server
 ### Start the Servers
 
 ```bash
-yarn start:rest-server # starts rest-server
+yarn start:rest-server
 ```

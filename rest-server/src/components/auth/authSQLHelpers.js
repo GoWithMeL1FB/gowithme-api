@@ -15,7 +15,7 @@ export const getUserIDHelper = ({ username, email }) => {
 
 export const storePasswordHelper = ({password}, {id}) => {
   return `
-    INSERT INTO credentials ( hashedPassword, user_ID )
+    REPLACE INTO credentials ( hashedPassword, user_ID )
     VALUES ('${password}', '${id}')
   `
 };

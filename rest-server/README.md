@@ -13,5 +13,5 @@ yarn db:setup
 ### Start the server
 
 ```bash
-npm start
+yarn run start
 ```
