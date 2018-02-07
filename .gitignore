@@ -8,7 +8,7 @@ package-lock.json
 
 .npm
 
-# eslint cache
+# eslint
 .eslintcache
 
 # Output of 'npm pack'
@@ -18,4 +18,4 @@ package-lock.json
 .yarn-integrity
 
 # tests
-__tests__
+coverage

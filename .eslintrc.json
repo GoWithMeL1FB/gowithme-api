@@ -1,6 +1,6 @@
 {
   "extends": [
-    "airbnb", 
+    "airbnb-base",
     "prettier",
     "plugin:security/recommended",
     "eslint:recommended",
@@ -15,7 +15,7 @@
     "jest"
   ],
   "rules": {
-    "linebreak-style": false,
+    "linebreak-style": 1,
     "semi": 2,
     "prettier/prettier": [
       "error",
@@ -25,7 +25,7 @@
   "import/first": "off",
   "import/prefer-default-export": "off",
   "import/no-unresolved": [
-    2, 
+    2,
     { "caseSensitive": false }
   ],
   "jest/no-disabled-tests": "warn",
@@ -34,7 +34,7 @@
   "jest/prefer-to-have-length": "warn",
   "jest/valid-expect": "error"
   },
-  "parserOptions": { "ecmaVersion": 6 },
+  "parserOptions": { "ecmaVersion": 8 },
   "env": { "es6": true },
   "ecmaFeatures": {
     "jsx": true
