@@ -37,7 +37,7 @@ afterEach((done) => {
 describe('Attatch authorization token / Signup', () => {
   test('it should attatch a token to the user', async () => {
     expect.assertions(1);
-    const { status } = await request(app)
+    const { status } = await request(app.listen(1234))
       .post('/api/auth/signup')
       .send(payload);
     expect(status).toBe(200);
@@ -47,7 +47,7 @@ describe('Attatch authorization token / Signup', () => {
 describe('User Login', () => {
   test('it should log a user in', async () => {
     expect.assertions(1);
-    const { status } = await request(app)
+    const { status } = await request(app.listen(1452))
       .post('/api/auth/login')
       .send({username: 'donnie123', password: 'donnie123'});
     expect(status).toBe(200);

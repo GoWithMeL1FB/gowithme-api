@@ -7,11 +7,14 @@ import { hashPW, PWVerification } from '../../middleware/auth/bcrypt';
 
 export const signUpController = async (req, res) => {
   try {
+    // hash user's password
     req.body.password = await hashPW(req.body.password);
     await signUpQuery(req.body);
-    success('signUpController - signed up with token ');
+
+    // success('signUpController - signed up with token ');
     delete req.body.password;
 
+    // generate token and send
     const token = await generateToken(req.body.email, req.body.username);
     req.body.token = token;
     return res.status(200).send(req.body.token);
@@ -35,8 +38,8 @@ export const loginController = async (req, res) => {
     if (isVerified) {
       const token = await generateToken(username, email);
       verification.token = token;
-      success('loginController - user logged in with token');
 
+      // success('loginController - user logged in with token');
       return res.status(200)
                 .send(verification);
     } else {
