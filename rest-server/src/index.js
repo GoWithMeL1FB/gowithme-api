@@ -3,17 +3,15 @@ import App from './config/express';
 import { success } from '../src/lib/logger';
 
 require('./config/database');
-require('./config/database/models');
-//const seedTables = require("./config/database/models/seed");
 
 const app = App.express;
 
 const server = http.createServer(app);
-const PORT = process.env.PORT;
+const PORT = 3030;
 
-server.listen(PORT, (err) => {
+const serve = server.listen(PORT, (err) => {
   if (err) throw new Error;
   success('successfully connected to port:', PORT);
 });
 
-module.exports = app;
+module.exports = { app: app, serve: server }

@@ -13,5 +13,5 @@ mongod
 ### Start Server
 
 ```bash
-npm run start # open in new terminal!
+yarn run start # open in new terminal!
 ```

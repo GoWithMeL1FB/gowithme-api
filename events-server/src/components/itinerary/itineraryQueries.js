@@ -4,10 +4,10 @@ import { success, error } from '../../lib/logger';
 export const getEventInfo = async (body) => {
   try {
     const eventInfo = await getEventInfoHelper(body);
-    success('Queries - queried event info');
+    // success('Queries - queried event info');
     return eventInfo;
   } catch (err) {
-    error('Queries - could not query db for info \n', err);
+    // error('Queries - could not query db for info \n', err);
     return err.message;
   }
 };

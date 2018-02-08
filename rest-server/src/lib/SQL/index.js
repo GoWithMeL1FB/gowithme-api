@@ -69,7 +69,7 @@ export const createUsersTable = async () => {
 
 export const dropUserTable = async () => {
   try {
-    await db.queryAsync(
+    await db.query(
       `DROP TABLE IF EXISTS users`
     );
     success('successfully dropped users table');
@@ -198,10 +198,7 @@ export const createCredentialsTable = async () => {
         createdAt datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
         updatedAt datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY (id),
-        UNIQUE KEY hashedPassword (hashedPassword),
-        UNIQUE KEY credentials_hashedPassword_unique (hashedPassword),
-        KEY user_ID (user_ID),
-        CONSTRAINT credentials_ibfk_1 FOREIGN KEY (user_ID) REFERENCES users (id) ON DELETE CASCADE
+        UNIQUE KEY user_ID (user_ID)
       )
       `
     );
@@ -213,7 +210,7 @@ export const createCredentialsTable = async () => {
 
 export const dropCredentialsTable = async () => {
   try {
-    await db.queryAsync(
+    await db.query(
       `
         DROP TABLE IF EXISTS credentials
       `

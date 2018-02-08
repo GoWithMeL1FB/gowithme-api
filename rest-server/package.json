@@ -7,7 +7,7 @@
     "rest-server": "entry.js"
   },
   "scripts": {
-    "test": "jest --coverage --silent --forceExit",
+    "test": "jest --silent --forceExit",
     "start": "nodemon bin/entry.js",
     "db:setup": "babel-node src/config/database/setup.js",
     "seed": "node src/config/database/models/seed.js "

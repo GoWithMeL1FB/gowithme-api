@@ -31,14 +31,16 @@ export const signUpQuery = async (body) => {
 
 export const loginQuery = async (body) => {
   try {
+    // gets id, username, and email from db
     const queryString = loginHelper(body);
     const data = await db.query(queryString);
+
+    // grabs hashed password that was saved with user
     const passwordQuery = findDbPasswordHelper(data[0][0]);
-
     const password = await db.query(passwordQuery);
-    success('loginQuery - successfully retrieved data');
-    const userInfo = Object.assign(data[0][0], password[0][0]);
 
+    // success('loginQuery - successfully retrieved data');
+    const userInfo = Object.assign(data[0][0], password[0][0]);
     return userInfo;
     // db.end();
   } catch (err) {
