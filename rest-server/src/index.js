@@ -7,7 +7,7 @@ require('./config/database');
 const app = App.express;
 
 const server = http.createServer(app);
-const PORT = process.env.PORT;
+const PORT = 3030;
 
 const serve = server.listen(PORT, (err) => {
   if (err) throw new Error;

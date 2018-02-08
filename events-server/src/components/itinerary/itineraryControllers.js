@@ -31,7 +31,7 @@ export const addEvent = async (req, res) => {
     // find user's itinerary and update events
     const addEventTo = await addEventToItin(req.body, eventInfo);
 
-    success('Controller - event added to itinerary');
+    // success('Controller - event added to itinerary');
     return res.status(200).send(addEventTo);
   } catch (err) {
     error('failed to add event to itinerary');
