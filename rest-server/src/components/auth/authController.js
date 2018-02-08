@@ -1,7 +1,7 @@
 import db from '../../config/database';
 import { signUpQuery, loginQuery } from './authQueries';
 import { success, error, warning } from '../../lib/logger';
-import { generateToken } from '../../middleware/auth/jwt';
+import { generateToken, JWTverification } from '../../middleware/auth/jwt';
 import { hashPW, PWVerification } from '../../middleware/auth/bcrypt';
 // import { read } from 'fs';
 
@@ -41,12 +41,26 @@ export const loginController = async (req, res) => {
 
       // success('loginController - user logged in with token');
       return res.status(200)
-                .send(verification);
+        .set('authentication', verification.token.accessToken)
+        .set('Access-Control-Expose-Headers','authentication')
+        .send(verification);
     } else {
       warning('user failed to login with correct credentials');
       res.status(500).send('password or username does not match');
     }
   } catch (err) {
     error('error while trying to login', err);
+  }
+}
+
+export const verifyController = async (req, res) => {
+  try {
+    //verify webtoken
+    JWTverification(req)
+    //return response
+
+    return res.status(200).send(req.body);
+  } catch (err) {
+    error('error', err);
   }
 }

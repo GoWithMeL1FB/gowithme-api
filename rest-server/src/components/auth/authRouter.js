@@ -18,6 +18,8 @@ router.route('/login')
 
 router.route('/test').post(signUpController);
 
+router.route('/verify').post(verifyController);
+
 // router.route('/facebook',
 //   passportFacebook.authenticate('facebook'));
 
