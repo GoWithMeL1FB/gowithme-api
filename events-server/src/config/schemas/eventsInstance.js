@@ -36,6 +36,17 @@ const EventInstanceSchema = new mongoose.Schema({
       type: String,
     },
   },
+  meta: {
+    rating: {
+      type: Number,
+      default: 0,
+      max: 5,
+    },
+    likes: {
+      type: Number,
+      default: 0,
+    },
+  },
   attendees: {
     type: String,
   },
