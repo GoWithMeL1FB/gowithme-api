@@ -18,3 +18,7 @@ export const addEventToHelper = ({ itineraryId }, event) => (
     $push: { events: event },
   })
 );
+
+export const allItinerariesHelper = () => (
+  Itinerary.find()
+)

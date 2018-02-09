@@ -1,16 +1,16 @@
-import { getEventInfo, addEventToItin } from './itineraryQueries';
+import { getEventInfo, addEventToItin, allItineraryQuery } from './itineraryQueries';
 import Itinerary from '../../config/schemas/itinerary';
 // import Events from '../../config/schemas/event';
 import { success, error } from '../../lib/logger';
 
 export const createItinerary = async (req, res) => {
   try {
-    const { title, owner } = req.body;
-
+    const { title, owner, image } = req.body;
     // new instance of Itinearry with props from req.body
     const newItinerary = new Itinerary({
       title,
       owner,
+      image,
     });
 
     // saves itinerary instance to db
@@ -38,3 +38,14 @@ export const addEvent = async (req, res) => {
     res.status(403).send(err.message);
   }
 };
+
+export const allItineraries = async (req, res) => {
+  try {
+    const allItin = await allItineraryQuery();
+    console.log('controller - itin:', allItin);
+    return res.status(200).send(allItin);
+  } catch(err) {
+    error('Controller - failed to query all itineraries');
+    throw new Error(err.message);
+  }
+}

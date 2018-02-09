@@ -29,6 +29,7 @@ export const updateUserInfoQuery = async (body) => {
   try {
     const queryString = updateUserDataHelper(body);
     const updatedInfo = await db.query(queryString);
+    success('Quereis - User\'s info was updated')
     return updatedInfo[0];
   } catch (err) {
     error('could not query updated info', err);
