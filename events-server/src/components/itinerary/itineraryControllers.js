@@ -5,12 +5,12 @@ import { success, error } from '../../lib/logger';
 
 export const createItinerary = async (req, res) => {
   try {
-    const { title, owner } = req.body;
-
+    const { title, owner, image } = req.body;
     // new instance of Itinearry with props from req.body
     const newItinerary = new Itinerary({
       title,
       owner,
+      image,
     });
 
     // saves itinerary instance to db

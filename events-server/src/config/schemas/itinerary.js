@@ -9,6 +9,9 @@ const ItinerarySchema = new mongoose.Schema({
     type: String,
     required: [true, 'this itinerary needs an owner'],
   },
+  image: {
+    type: String,
+  },
   events: [
     {
       _eventId: {
