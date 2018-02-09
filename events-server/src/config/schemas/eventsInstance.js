@@ -10,6 +10,17 @@ const EventInstanceSchema = new mongoose.Schema({
   category: {
     type: String,
   },
+  photo: {
+    prefix: {
+      type: String,
+    },
+    suffix: {
+      type: String
+    },
+  },
+  price: {
+    type: String,
+  },
   time: {
     date: {
       type: Date,

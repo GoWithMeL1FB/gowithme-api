@@ -1,4 +1,4 @@
-import { createEventHelper, createEventInstanceHelper } from './eventSQLHelpers';
+import { createEventHelper, createEventInstanceHelper, getAllEventsHelper } from './eventSQLHelpers';
 import { success, error } from '../../lib/logger';
 
 export const createEventQuery = async (body) => {
@@ -20,3 +20,14 @@ export const createEventQuery = async (body) => {
   }
 };
 
+export const getAllEventsQuery = async (body) => {
+  try {
+    // calls db for all events
+    const data = await getAllEventsHelper();
+    console.log(data);
+    return data;
+  } catch(err) {
+    error('Queries - failed to grab all events')
+    throw new Error(err);
+  }
+}

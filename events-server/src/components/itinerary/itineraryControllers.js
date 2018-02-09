@@ -1,4 +1,4 @@
-import { getEventInfo, addEventToItin } from './itineraryQueries';
+import { getEventInfo, addEventToItin, allItineraryQuery } from './itineraryQueries';
 import Itinerary from '../../config/schemas/itinerary';
 // import Events from '../../config/schemas/event';
 import { success, error } from '../../lib/logger';
@@ -38,3 +38,14 @@ export const addEvent = async (req, res) => {
     res.status(403).send(err.message);
   }
 };
+
+export const allItineraries = async (req, res) => {
+  try {
+    const allItin = await allItineraryQuery();
+    console.log('controller - itin:', allItin);
+    return res.status(200).send(allItin);
+  } catch(err) {
+    error('Controller - failed to query all itineraries');
+    throw new Error(err.message);
+  }
+}

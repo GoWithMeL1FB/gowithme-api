@@ -22,6 +22,17 @@ const EventSchema = new mongoose.Schema({
     // specifies set of allowed values for the field
     enum: ['eat', 'activity', 'visit'],
   },
+  photo: {
+    prefix: {
+      type: String,
+    },
+    suffix: {
+      type: String
+    },
+  },
+  price: {
+    type: String,
+  },
   attendees: {
     type: String,
     enum: ['1-2', '3-6', '6++'],

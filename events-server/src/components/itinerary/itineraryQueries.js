@@ -1,4 +1,4 @@
-import { getEventInfoHelper, addEventToHelper } from './itinerarySQLHelpers';
+import { getEventInfoHelper, addEventToHelper, allItinerariesHelper } from './itinerarySQLHelpers';
 import { success, error } from '../../lib/logger';
 
 export const getEventInfo = async (body) => {
@@ -24,3 +24,13 @@ export const addEventToItin = async (body, event) => {
     return err.message;
   }
 };
+
+export const allItineraryQuery = async (body) => {
+  try {
+    const itin = await allItinerariesHelper();
+    console.log('queries - itin:', itin)
+    return itin;
+  } catch(err) {
+    error('Queries - failed to get all itineraries')
+  }
+}
