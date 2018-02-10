@@ -19,6 +19,12 @@ export const addEventToHelper = ({ itineraryId }, event) => (
   })
 );
 
+// fetches all itineraries
 export const allItinerariesHelper = () => (
   Itinerary.find()
+)
+
+// fetches itin by username
+export const getItinerarByUsernameSQLHelper = (username) => (
+  Itinerary.find({ username: '${username}' })
 )
