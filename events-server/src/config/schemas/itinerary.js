@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Event = require('./event');
 
 const ItinerarySchema = new mongoose.Schema({
   title: {
@@ -15,45 +16,22 @@ const ItinerarySchema = new mongoose.Schema({
   events: [
     {
       _eventId: {
-        type: String,
-      },
-      title: {
-        type: String,
-      },
-      description: {
-        type: String,
-      },
-      time: {
-        date: {
-          type: String,
-        },
-        start: {
-          type: String,
-        },
-        end: {
-          type: String,
-        },
-        duration: {
-          type: String,
-        },
-      },
-      meta: {
-        rating: {
-          type: Number,
-          default: 0,
-          max: 5,
-        },
-        likes: {
-          type: Number,
-          default: 0,
-        },
-      },
-      attendees: {
-        type: String,
-        enum: ['1-2', '3-6', '6++'],
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: Event,
       },
     },
   ],
+  meta: {
+    rating: {
+      type: Number,
+      default: 0,
+      max: 5,
+    },
+    likes: {
+      type: Number,
+      default: 0,
+    },
+  },
 });
 
 const Itinerary = mongoose.model('Itinerary', ItinerarySchema);

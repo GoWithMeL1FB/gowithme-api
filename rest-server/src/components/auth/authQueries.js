@@ -11,20 +11,20 @@ import { getUserDataHelper } from '../user/userSQLHelpers';
 
 export const signUpQuery = async (body) => {
   try {
-    const postUserData = signUpHelper(body);
-    const getUserId = getUserIDHelper(body);
 
     // post info to db
-    db.query(postUserData);
+    const postUserData = await signUpHelper(body);
+    const post = await db.query(postUserData);
 
     // queries for user's id
+    const getUserId = await getUserIDHelper(body);
     const userID = await db.query(getUserId);
 
     // store password with id
     const postUserPassword = await storePasswordHelper(body, userID[0][0]);
     db.query(postUserPassword);
   } catch (err) {
-    warning('signUpQuery - error= ', err);
+    warning('signUpQuery - error:', err);
     throw new Error(err);
   }
 };
