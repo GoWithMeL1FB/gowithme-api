@@ -1,4 +1,9 @@
-import { getEventInfoHelper, addEventToHelper, allItinerariesHelper } from './itinerarySQLHelpers';
+import {
+  getEventInfoHelper,
+  addEventToHelper,
+  allItinerariesHelper,
+  getItinerarByUsernameSQLHelper,
+} from './itinerarySQLHelpers';
 import { success, error } from '../../lib/logger';
 
 export const getEventInfo = async (body) => {
@@ -25,6 +30,7 @@ export const addEventToItin = async (body, event) => {
   }
 };
 
+// gets all itin
 export const allItineraryQuery = async (body) => {
   try {
     const itin = await allItinerariesHelper();
@@ -33,4 +39,16 @@ export const allItineraryQuery = async (body) => {
   } catch(err) {
     error('Queries - failed to get all itineraries')
   }
-}
+};
+
+// get all itin by username
+export const getItinerariesByUsernameQuery = async (username) => {
+  try {
+    // calls db for events by username
+    const data = await getItinerarByUsernameSQLHelper(username);
+    return data;
+  } catch(err) {
+    error('Queries - failed to fetch events by username');
+    throw new Error(err.message);
+  }
+};

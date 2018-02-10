@@ -1,5 +1,7 @@
-import { createEventQuery, getAllEventsQuery } from './eventQueries';
-// import Events from '../../config/schemas/event';
+import {
+  createEventQuery,
+  getAllEventsQuery,
+} from './eventQueries';
 import { success, error } from '../../lib/logger';
 
 export const createEventController = async (req, res) => {
@@ -8,7 +10,7 @@ export const createEventController = async (req, res) => {
     // success('Controller - created a query');
     return res.status(200).send(result);
   } catch (err) {
-    error('event was not created', err);
+    error('Controller - Event was not created', err);
     res.status(403).send(err.message);
   }
 };
@@ -16,10 +18,9 @@ export const createEventController = async (req, res) => {
 export const getAllEventsController = async (req, res) => {
   try {
     const allEvents = await getAllEventsQuery();
-    console.log(allEvents);
     return res.status(200).send(allEvents);
   } catch(err) {
-    error('Failed to query all events');
+    error('Controller - Failed to query all events');
     throw new Error(err.message);
   }
-}
+};
