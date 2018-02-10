@@ -34,7 +34,7 @@ const setup = async () => {
   // await createCategoryJoinTable();
   // await createCommentsTable();
   // await createRatingTable();
-  await createUser();
+  // await createUser();
   process.exit();
 };
 
