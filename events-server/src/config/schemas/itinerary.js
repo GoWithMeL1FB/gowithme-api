@@ -22,12 +22,23 @@ const ItinerarySchema = new mongoose.Schema({
     },
   ],
   meta: {
-    rating: {
+    stars: [
+      {
+        username: {
+          type: String,
+        },
+        rating: {
+          type: Number,
+          default: 0,
+          max: 5,
+        },
+      }
+    ],
+    likes: {
       type: Number,
       default: 0,
-      max: 5,
     },
-    likes: {
+    shares: {
       type: Number,
       default: 0,
     },
