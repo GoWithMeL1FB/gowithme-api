@@ -1,17 +1,25 @@
 const mongoose = require('mongoose');
+const Itinerary = require('./itinerary');
+const EventInstance = require('./eventsInstance');
+
 
 const FavoritesSchema = new mongoose.Schema({
-  itineraries: [
+  owner: {
+    type: String
+  },
+  itinerary: [
     {
-      _itineraryId: {
+      ID: {
         type: mongoose.SchemaTypes.ObjectId,
+        ref: Itinerary,
       }
     }
   ],
-  events: [
+  event: [
     {
-      _eventId: {
+      ID: {
         type: mongoose.SchemaTypes.ObjectId,
+        ref: EventInstance,
       }
     }
   ]
