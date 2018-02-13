@@ -2,9 +2,10 @@ import Itinerary from '../../config/schemas/itinerary';
 import EventInstance from '../../config/schemas/eventsInstance';
 
 // adds a like.. wip
-export const likeSQLHelper = ({ owner, username, type, id }) => {
+// check if someone has already liked
+export const likeSQLHelper = ({ itineraryID, username, type}) => {
   if (type == 'event') {
-    return EventInstance.findOneAndUpdate({ _itineraryId: owner }, {
+    return EventInstance.findOneAndUpdate({ _itineraryId: itineraryID }, {
       $push: {
         'meta.likes': {
           username: username,
@@ -14,11 +15,36 @@ export const likeSQLHelper = ({ owner, username, type, id }) => {
     })
   }
   if (type == 'itinerary') {
-    return Itinerary.findOneAndUpdate({ owner: owner }, {
+    return Itinerary.findByIdAndUpdate(itineraryID, {
       $push: {
         'meta.likes': {
           username: username,
           liked: 'true',
+        }
+      }
+    })
+  }
+}
+
+// ratings ... wip
+// need to check if someone has already rated
+export const ratingSQLHelper = ({ itineraryID, username, type, rating }) => {
+  if (type == 'event') {
+    return EventInstance.findOneAndUpdate({ _itineraryId: itineraryID }, {
+      $push: {
+        'meta.stars': {
+          username: username,
+          rating: rating,
+        }
+      }
+    })
+  }
+  if (type == 'itinerary') {
+    return Itinerary.findByIdAndUpdate(itineraryID, {
+      $push: {
+        'meta.stars': {
+          username: username,
+          rating: rating,
         }
       }
     })
