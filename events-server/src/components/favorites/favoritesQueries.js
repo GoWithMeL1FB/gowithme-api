@@ -1,15 +1,15 @@
 import {
   getFavesSQLHelper,
   faveSomethingSQLHelper,
+  deleteFaveItemSQLHelper,
 } from './favoritesSQLHelpers';
 
 import { error } from '../../lib/logger';
 import Favorites from '../../config/schemas/favories';
 
-export const getFavesByUsernameQuery = async (body) => {
+export const getFavesByUsernameQuery = async(body) => {
   try {
     const favesData = await getFavesSQLHelper(body);
-    console.log('queries - favs data:', favesData);
     return favesData;
   } catch(err) {
     error('Queries - failed to query db for favorites');
@@ -17,10 +17,9 @@ export const getFavesByUsernameQuery = async (body) => {
   }
 }
 
-export const faveSomethingQuery = async (body) => {
+export const faveSomethingQuery = async(body) => {
   try {
     const queryStatus = await faveSomethingSQLHelper(body);
-    console.log('queries - query status:', queryStatus);
     return queryStatus;
   } catch(err) {
     error('Queries - failed to query db for fav itineraries');
@@ -28,3 +27,13 @@ export const faveSomethingQuery = async (body) => {
   }
 }
 
+export const deleteFaveItemQuery = async(body) => {
+  try {
+    const queryStatus = await deleteFaveItemSQLHelper(body);
+    console.log(queryStatus);
+    return queryStatus;
+  } catch(err) {
+    error('Queries - failed to query db for delete');
+    throw new Error(err.message);
+  }
+}

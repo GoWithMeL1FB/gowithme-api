@@ -1,6 +1,7 @@
 import {
   getFavesByUsernameQuery,
-  faveSomethingQuery
+  faveSomethingQuery,
+  deleteFaveItemQuery,
 } from './favoritesQueries';
 
 import Favorites from '../../config/schemas/favories';
@@ -8,7 +9,7 @@ import { error } from '../../lib/logger';
 
 
 // fetches data from users Favorites schema
-export const getFavesController = async (req, res) => {
+export const getFavesController = async(req, res) => {
   try {
     const allFaves = await getFavesByUsernameQuery(req.params.username);
     res.status(200).send(allFaves);
@@ -20,7 +21,7 @@ export const getFavesController = async (req, res) => {
 
 // dynamically fav something
 // pass in username, type (itinerary or event), id
-export const faveSomethingController = async (req, res) => {
+export const faveSomethingController = async(req, res) => {
   try {
     const response = await faveSomethingQuery(req.body);
     res.status(200).send(response);
@@ -32,7 +33,7 @@ export const faveSomethingController = async (req, res) => {
 
 // creates a fav table for the user
 // pass in username
-export const newFavoritesController = async (req, res) => {
+export const newFavoritesController = async(req, res) => {
   try {
     const { owner } = req.body;
     const newFaves = new Favorites({
@@ -43,6 +44,18 @@ export const newFavoritesController = async (req, res) => {
     return res.status(200).send(newFaves);
   } catch(err) {
     error('Controller - failed to create favorites schema', err);
+    res.status(500).send(err.message);
+  }
+}
+
+// delete a favorite list item
+// how can i add a fail safe????
+export const deleteFaveItemController = async(req, res) => {
+  try {
+    const deleteStatus = await deleteFaveItemQuery(req.body);
+    res.status(200).send(deleteStatus);
+  } catch(err) {
+    error('Controller - failed to delete item');
     res.status(500).send(err.message);
   }
 }

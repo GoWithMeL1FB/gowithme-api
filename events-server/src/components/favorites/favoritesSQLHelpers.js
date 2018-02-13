@@ -15,3 +15,15 @@ export const faveSomethingSQLHelper = ({ owner, type, id }) => {
     });
   }
 }
+
+export const deleteFaveItemSQLHelper = ({owner, type, id }) => {
+  if (type == 'itinerary') {
+    return Favorites.findOneAndUpdate({ owner: owner }, {
+      $pull: { itinerary: { ID: id } },
+    });
+  } else {
+    return Favorites.findOneAndUpdate({ owner: owner }, {
+      $pull: { event: { ID: id } },
+    });
+  }
+}
