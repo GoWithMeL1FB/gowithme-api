@@ -38,6 +38,7 @@ export const allItineraryQuery = async (body) => {
     return itin;
   } catch(err) {
     error('Queries - failed to get all itineraries')
+    throw new Error(err.message);
   }
 };
 

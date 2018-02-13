@@ -12,7 +12,7 @@
     "db:setup": "babel-node src/config/database/setup.js",
     "seed": "node src/config/database/models/seed.js "
   },
-  "author": "",
+  "author": "k",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^1.0.3",

@@ -5,7 +5,6 @@ import {
   getItinerariesByUsernameQuery,
 } from './itineraryQueries';
 import Itinerary from '../../config/schemas/itinerary';
-// import Events from '../../config/schemas/event';
 import { success, error } from '../../lib/logger';
 
 // creates itinerary and returns itin id

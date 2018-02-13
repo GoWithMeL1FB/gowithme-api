@@ -37,15 +37,41 @@ const EventInstanceSchema = new mongoose.Schema({
     },
   },
   meta: {
-    rating: {
-      type: Number,
-      default: 0,
-      max: 5,
-    },
-    likes: {
-      type: Number,
-      default: 0,
-    },
+    stars: [
+      {
+        username: {
+          type: String,
+        },
+        rating: {
+          type: Number,
+          default: 0,
+          max: 5,
+        },
+      }
+    ],
+    likes: [
+      {
+        username: {
+          type: String,
+        },
+        liked: {
+          type: String,
+          enum: ['true', 'false'],
+        }
+      }
+    ],
+    shares: [
+      {
+        username: {
+          type: String,
+        },
+        shares: {
+          type: String,
+          enum: ['true', 'false'],
+          default: 'false',
+        }
+      }
+    ],
   },
   attendees: {
     type: String,

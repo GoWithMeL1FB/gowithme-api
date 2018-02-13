@@ -2,7 +2,6 @@ import mongoose from 'mongoose';
 import { success } from '../../lib/logger';
 
 mongoose.connect('mongodb://localhost:27017/gowithme');
-// what does this do??
 mongoose.Promise = global.Promise;
 const mongoDB = mongoose.connection;
 

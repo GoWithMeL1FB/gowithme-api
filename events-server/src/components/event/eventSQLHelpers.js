@@ -18,7 +18,7 @@ export const createEventHelper = ({
 
 export const createEventInstanceHelper = ({
   title, description, location, category, attendees, prefix, suffix, date,
-  start, end, duration, userId }, { _id }) => (
+  start, end, duration, itineraryId }, { _id }) => (
   new EventInstance({
     title,
     description,
@@ -35,7 +35,7 @@ export const createEventInstanceHelper = ({
       duration,
       attendees,
     },
-    _itineraryId: userId,
+    _itineraryId: itineraryId,
     _eventId: _id,
   })
 );
