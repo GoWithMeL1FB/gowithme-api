@@ -26,5 +26,5 @@ export const allItinerariesHelper = () => (
 
 // fetches itin by username
 export const getItinerarByUsernameSQLHelper = (username) => (
-  Itinerary.find({ owner: '${username}' })
+  Itinerary.find({ owner: username }).populate('EventInstance')
 )
