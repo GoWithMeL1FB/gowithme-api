@@ -1,21 +1,20 @@
-export const updateUserDataHelper = ({ id, firstname, lastname, username, email, birthday, bio }) => {
+export const updateUserDataHelper = ({ username, firstname, lastname, email, birthday, bio }) => {
   return `
     UPDATE users
       SET   bio = '${bio}',
-            birthday = '${birthday}',
-            username = '${username}',
+            birthday = ${birthday},
             email = '${email}',
             firstname = '${firstname}',
             lastname = '${lastname}'
-      WHERE id = ${id};
+      WHERE username = '${username}';
   `;
 }
 
-export const getUserDataHelper = ({ id }) => {
+export const getUserDataHelper = ({ username }) => {
   return `
-    SELECT email, username, birthday, bio
+    SELECT email, bio, firstname, lastname, birthday, bio
     FROM users
-    WHERE id = ${id};
+    WHERE username = '${username}';
   `;
 }
 

@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Event = require('./event');
 
 const ItinerarySchema = new mongoose.Schema({
   title: {
@@ -15,9 +14,9 @@ const ItinerarySchema = new mongoose.Schema({
   },
   events: [
     {
-      _eventId: {
+      event: {
         type: mongoose.SchemaTypes.ObjectId,
-        ref: Event,
+        ref: 'EventInstance',
       },
     },
   ],

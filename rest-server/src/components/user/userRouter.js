@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.route('/getAllUsers')
   .get(getAllUsers);
-router.route('/fetchUsersInfo/:id')
+router.route('/fetchUsersInfo/:username')
   .get(getUserInfo);
 router.route('/updateUser')
   .put(updateUserInfo);
