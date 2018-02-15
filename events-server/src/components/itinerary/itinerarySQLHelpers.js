@@ -26,6 +26,7 @@ export const allItinerariesHelper = () => (
 )
 
 // fetches itin by username
+
 export const getItinerarByUsernameSQLHelper = async (username) => {
   console.log('this is username', username);
   let results;
