@@ -44,9 +44,11 @@ export const allItineraryQuery = async (body) => {
 
 // get all itin by username
 export const getItinerariesByUsernameQuery = async (username) => {
+  console.log('Get it!')
   try {
     // calls db for events by username
     const data = await getItinerarByUsernameSQLHelper(username);
+    console.log('data=', data)
     return data;
   } catch(err) {
     error('Queries - failed to fetch events by username');

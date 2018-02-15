@@ -4,7 +4,7 @@ const redis = require("redis"), client = redis.createClient();
 // defaults to 127.0.0.1 port 6379
 
 client.on("connect", () => {
-    console.log('redis connected!')
+    console.log('redis connected!');
 });
 client.on("error", function(err) {
     console.log("Redis Error", + err);

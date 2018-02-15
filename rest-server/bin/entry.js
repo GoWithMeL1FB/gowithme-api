@@ -15,3 +15,5 @@ env.config({
 });
 
 require('../src');
+// require('../src/redis/cron')
+// require('../src/redis/')
