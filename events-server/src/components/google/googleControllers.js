@@ -4,8 +4,8 @@ gma.key(api);
 gma.units('imperial');
 
 export const getDistance = (req, res) => {
-    console.log('is the function getting invoked?????')
-    console.log('this is req.query:', req.query)
+    // console.log('is the function getting invoked?????')
+    // console.log('this is req.query:', req.query)
     const origin = req.query.origin;
     const destination = req.query.destination;
 
