@@ -22,10 +22,10 @@ export const userQuery = async () => {
 export const getUserInfoQuery = async (body) => {
   try {
     let result = [];
-    console.log("This should be first");
+    console.log("This should be first", body);
     const queryString = getUserDataHelper(body);
     const usersData = await db.query(queryString);
-    const userStats = await getUserStats(usersData[0][0].username)
+    const userStats = await getUserStats(body.username);
     console.log("***this is the users STATS: ", userStats);
     // should make a helper to do this
      result.push(usersData[0][0])
