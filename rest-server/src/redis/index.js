@@ -9,34 +9,29 @@ client.on("connect", () => {
 client.on("error", function(err) {
     console.log("Redis Error", + err);
   });
-/*
-*** This is for Testing redis ***
-client.set("string key", "string value", redis.print);
-client.hset("hash key", "hashtest 1", "some value", redis.print);
-client.hset(["hash key", "hashtest 2", "some other value"], redis.print);
-client.hkeys("hash key", function (err, replies) {
-    console.log(replies.length + " replies:");
-    replies.forEach(function (reply, i) {
-        console.log("    " + i + ": " + reply);
-    });
-    client.quit();
-});
-*/
 
-const setUserStats = () => {
-    
-    // query for userid's from mysql database
-    //get required data from mysql database
-    //vvv create hash for each user vvv
-    /*client.hmset('<username>', {
-        'dateCourseCount': <int>, 
-        'mostSharedDC': <int>, 
-        'mostLikedDC': <int> })
-    
-    client.hgetall('<username>', function(err, object) {
+export const getUserStats = (username) => {
+    client.hgetall(`${username}`, function(err, object) {
         console.log(object);
+        return object
     });
-    */
+}
+
+export const setUserStats = (array) => {
+    for(let i = 0; i < array.length; i++) {
+        console.log('set user stats', array[i].username);
+        client.hmset(`${array[i].username}`, {
+            'dateCourseCount': `${array[i].count}`, 
+            'mostSharedDC': `${array[i].mostShared.name}`, 
+            'mostLikedDC': `${array[i].mostLiked.name}` })
+        
+        client.hgetall(`${array[i].username}`, function(err, object) {
+            console.log(object);
+        });
+
+
+    }
+
 
 }
 
