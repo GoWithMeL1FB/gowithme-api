@@ -27,18 +27,15 @@ export const allItinerariesHelper = () => (
 
 // fetches itin by username
 export const getItinerarByUsernameSQLHelper = async (username) => {
-  console.log('aer werwe a', username)
-  console.log('aer werwe a', typeof username)
+  console.log('this is username', username);
   let results;
-  await Itinerary.find({owner: 'karolee'}, (err, data) => {
+  await Itinerary.find({owner: `${username}`}, (err, data) => {
     if (err) {
-      console.log('hey')
+     
       throw new Error(err)
     } else {
-      console.log('dataaaa= ', data)
       results = data
     }
   })
-  console.log('results= ', results)
   return results
 };
