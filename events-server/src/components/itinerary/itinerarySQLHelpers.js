@@ -2,6 +2,7 @@ import Itinerary from '../../config/schemas/itinerary';
 import EventInstance from '../../config/schemas/eventsInstance';
 import { success, error } from '../../lib/logger';
 
+
 // uses event id to find event's info
 export const getEventInfoHelper = ({ eventId }) => (
   EventInstance.findById(eventId, (err) => {
@@ -25,6 +26,17 @@ export const allItinerariesHelper = () => (
 )
 
 // fetches itin by username
-export const getItinerarByUsernameSQLHelper = (username) => (
-  Itinerary.find({ owner: username }).populate('EventInstance')
-)
+
+export const getItinerarByUsernameSQLHelper = async (username) => {
+  console.log('this is username', username);
+  let results;
+  await Itinerary.find({owner: `${username}`}, (err, data) => {
+    if (err) {
+     
+      throw new Error(err)
+    } else {
+      results = data
+    }
+  })
+  return results
+};

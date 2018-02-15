@@ -1,6 +1,11 @@
 import db from '../../config/database';
-import { getAllUserDataHelper, getUserDataHelper, updateUserDataHelper} from './userSQLHelpers';
+import {
+  getAllUserDataHelper,
+  getUserDataHelper,
+  updateUserDataHelper
+} from './userSQLHelpers';
 import { success, error } from '../../lib/logger';
+
 
 // gets info of all users
 export const userQuery = async () => {

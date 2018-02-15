@@ -1,6 +1,9 @@
 import http from 'http';
 import App from './config/express';
 import { success } from '../src/lib/logger';
+//import './redis/cron.js';
+import './redis/cron'
+import './redis/'
 
 require('./config/database');
 
