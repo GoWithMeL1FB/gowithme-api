@@ -5,7 +5,7 @@ import {
   updateUserDataHelper
 } from './userSQLHelpers';
 import { success, error } from '../../lib/logger';
-
+import { getUserStats } from '../../redis/index.js'
 
 // gets info of all users
 export const userQuery = async () => {
@@ -21,9 +21,16 @@ export const userQuery = async () => {
 // get logged in user's info
 export const getUserInfoQuery = async (body) => {
   try {
+    let result = [];
+    console.log("This should be first");
     const queryString = getUserDataHelper(body);
     const usersData = await db.query(queryString);
-    return usersData[0];
+    const userStats = await getUserStats(usersData[0][0].username)
+    console.log("***this is the users STATS: ", userStats);
+    // should make a helper to do this
+     result.push(usersData[0][0])
+     result.push(userStats)
+    return result;
   } catch (err) {
     error('could not query user\'s info', err);
   }

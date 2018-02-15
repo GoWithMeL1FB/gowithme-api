@@ -11,7 +11,8 @@
     "start": "nodemon bin/entry.js",
     "db:setup": "babel-node src/config/database/setup.js",
     "seed": "node src/config/database/models/seed.js ",
-    "cron": "nodemon src/redis/cron.js"
+    "cron": "nodemon src/redis/cron.js",
+    "start:redis": "/usr/local/etc/redis.conf"
   },
   "author": "k",
   "license": "ISC",
