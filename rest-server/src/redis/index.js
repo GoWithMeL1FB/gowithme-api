@@ -17,9 +17,9 @@ client.on("error", function(err) {
 export const getUserStats = async (username) => {
     try{
         let stats = null;
-        
+        console.log('heyhey', username);
         await client.hgetallAsync(`${username}`).then((object) => {
-            console.log("this is the redis object", object);
+            console.log("~~~this is the redis object", object);
             stats = object;
         }) 
         console.log("!!***** getUserStats function ", username, stats)
