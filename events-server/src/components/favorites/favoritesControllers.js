@@ -12,8 +12,7 @@ import { error } from '../../lib/logger';
 // fetches data from users Favorites schema
 export const getFavesController = async(req, res) => {
   try {
-    const allFaves = await getFavesByUsernameQuery(req.params.username)
-
+    const allFaves = await getFavesByUsernameQuery(req.params.username);
     // const itinEvents = await getItinDetailsQuery(allFaves);
     res.status(200).send(allFaves);
   } catch(err) {

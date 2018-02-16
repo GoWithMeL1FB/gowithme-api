@@ -7,7 +7,7 @@
 // const { userQuery } = require('../components/user/userQueries');
 // const CronJob = require('cron').CronJob;
 
-const StatWorker = new CronJob('* 5 * * * * *', async () => {
+const StatWorker = new CronJob('* 1 * * * * *', async () => {
   console.log("Cron job Ran!");
   //query db for all usernames
   const allUsers = await userQuery();

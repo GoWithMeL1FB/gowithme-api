@@ -20,6 +20,7 @@ export const createEventController = async(req, res) => {
 export const getAllEventsController = async(req, res) => {
   try {
     const allEvents = await getAllEventsQuery();
+    console.log('Controller - all events:', allEvents);
     return res.status(200).send(allEvents);
   } catch(err) {
     error('Controller - Failed to query all events');
