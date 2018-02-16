@@ -1,11 +1,12 @@
-export const updateUserDataHelper = ({ username, firstname, lastname, email, birthday, bio }) => {
+export const updateUserDataHelper = ({ username, firstname, lastname, email, birthday, bio, image }) => {
   return `
     UPDATE users
       SET   bio = '${bio}',
             birthday = ${birthday},
             email = '${email}',
             firstname = '${firstname}',
-            lastname = '${lastname}'
+            lastname = '${lastname}',
+            image = '${image}'
       WHERE username = '${username}';
   `;
 }

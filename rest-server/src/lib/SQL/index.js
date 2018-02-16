@@ -53,6 +53,7 @@ export const createUsersTable = async () => {
         username varchar(255) NOT NULL,
         birthday int(11) DEFAULT NULL,
         bio varchar(255) DEFAULT NULL,
+        image varchar(255) DEFAULT NULL,
         createdAt datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
         updatedAt datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY (id),
