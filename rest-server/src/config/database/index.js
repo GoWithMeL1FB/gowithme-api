@@ -3,8 +3,8 @@ import Promise from 'bluebird';
 
 import { success, error } from '../../lib/logger';
 
-const db = new Sequelize('GoWithMe', 'gowithme', 'password', {
-  host: 'localhost',
+const db = new Sequelize(process.env.AWS_DATABASE, process.env.AWS_USER, process.env.AWS_PASSWORD, {
+  host: process.env.AWS_HOST,
   dialect: 'mysql',
   port: 3306,
   logging: false
