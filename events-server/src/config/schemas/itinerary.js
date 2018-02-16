@@ -12,10 +12,13 @@ const ItinerarySchema = new mongoose.Schema({
   image: {
     type: String,
   },
+  description: {
+    type: String,
+  },
   events: [
     {
       event: {
-        type: mongoose.SchemaTypes.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'EventInstance',
       },
     },

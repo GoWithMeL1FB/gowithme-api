@@ -2,6 +2,7 @@ import {
   getFavesByUsernameQuery,
   faveSomethingQuery,
   deleteFaveItemQuery,
+  getItinDetailsQuery,
 } from './favoritesQueries';
 
 import Favorites from '../../config/schemas/favories';
@@ -11,7 +12,9 @@ import { error } from '../../lib/logger';
 // fetches data from users Favorites schema
 export const getFavesController = async(req, res) => {
   try {
-    const allFaves = await getFavesByUsernameQuery(req.params.username);
+    const allFaves = await getFavesByUsernameQuery(req.params.username)
+
+    // const itinEvents = await getItinDetailsQuery(allFaves);
     res.status(200).send(allFaves);
   } catch(err) {
     error('Controller - failed to fetch user faves');
@@ -24,6 +27,7 @@ export const getFavesController = async(req, res) => {
 export const faveSomethingController = async(req, res) => {
   try {
     const response = await faveSomethingQuery(req.body);
+
     res.status(200).send(response);
   } catch(err) {
     error('Controller - failed to favorite whatever the hell you wanted to fav');

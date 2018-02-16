@@ -5,7 +5,7 @@ import {
   updateUserDataHelper
 } from './userSQLHelpers';
 import { success, error } from '../../lib/logger';
-import { getUserStats } from '../../redis/index.js'
+import { getUserStats, setUserImg, getUserImg } from '../../redis/index.js'
 
 // gets info of all users
 export const userQuery = async () => {
@@ -26,10 +26,12 @@ export const getUserInfoQuery = async (body) => {
     const queryString = getUserDataHelper(body);
     const usersData = await db.query(queryString);
     const userStats = await getUserStats(body.username);
-    console.log("***this is the users STATS: ", userStats);
+    const userimage = await getUserImg(`${body.username}img`);
+    console.log("***this is the users STATS: ", userimage);
     // should make a helper to do this
      result.push(usersData[0][0])
      result.push(userStats)
+     result.push(userimage)
     return result;
   } catch (err) {
     error('could not query user\'s info', err);
@@ -38,9 +40,11 @@ export const getUserInfoQuery = async (body) => {
 
 // update user's info
 export const updateUserInfoQuery = async (body) => {
+  console.log('update user body', body );
   try {
     const queryString = updateUserDataHelper(body);
     const updatedInfo = await db.query(queryString);
+    setUserImg(`${body.username}img`, `${body.profileImage}` )
     success('Quereis - User\'s info was updated')
     return updatedInfo[0];
   } catch (err) {

@@ -3,6 +3,7 @@ import {
   addEventToItin,
   allItineraryQuery,
   getItinerariesByUsernameQuery,
+  getItinByIdQuery,
 } from './itineraryQueries';
 import Itinerary from '../../config/schemas/itinerary';
 import { success, error } from '../../lib/logger';
@@ -10,13 +11,14 @@ import { success, error } from '../../lib/logger';
 // creates itinerary and returns itin id
 export const createItinerary = async (req, res) => {
   try {
-    const { title, owner, image } = req.body;
+    const { title, owner, image, description } = req.body;
 
     // new instance of Itinearry with props from req.body
     const newItinerary = new Itinerary({
       title,
       owner,
       image,
+      description
     });
 
     // saves itinerary instance to db
@@ -50,7 +52,6 @@ export const addEvent = async (req, res) => {
 export const allItineraries = async (req, res) => {
   try {
     const allItin = await allItineraryQuery();
-    console.log('controller - itin:', allItin);
     return res.status(200).send(allItin);
   } catch(err) {
     error('Controller - failed to query all itineraries');
@@ -63,11 +64,19 @@ export const getItinerariesByUsernameController = async (req, res) => {
   console.log("req params", req.params.username);
   try {
     const itinerariesByUsername = await getItinerariesByUsernameQuery(req.params.username);
-
     return res.status(200).send(itinerariesByUsername);
-
   } catch(err) {
     error('Controller - Failed to fetch events by username')
+    throw new Error(err.message);
+  }
+}
+
+export const getItinById = async(req, res) => {
+  try {
+    const itinDetails = await getItinByIdQuery(req.params.id);
+    return res.status(200).send(itinDetails);
+  } catch(err) {
+    error('Queries - failed to fetch events by id');
     throw new Error(err.message);
   }
 }
