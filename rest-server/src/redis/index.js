@@ -1,6 +1,6 @@
 
 import Promise from 'bluebird';
-const redis = require("redis")
+import redis from 'redis';
 const client = redis.createClient();
 // download server with brew install redis
 // start the server run: redis-server /usr/local/etc/redis.conf
@@ -22,7 +22,7 @@ export const getUserStats = async (username) => {
         await client.hgetallAsync(`${username}`)
         .then((object) => {
             stats = object;
-        }) 
+        })
         console.log("!!***** getUserStats function ", username, stats)
         return stats
     } catch(err) {
@@ -49,10 +49,10 @@ export const setUserStats = (array) => {
     for(let i = 0; i < array.length; i++) {
         console.log('set user stats', array[i].username);
         client.hmset(`${array[i].username}`, {
-            'dateCourseCount': `${array[i].count}`, 
-            'mostSharedDC': `${array[i].mostShared.name}`, 
+            'dateCourseCount': `${array[i].count}`,
+            'mostSharedDC': `${array[i].mostShared.name}`,
             'mostLikedDC': `${array[i].mostLiked.name}` })
-        
+
         client.hgetall(`${array[i].username}`, function(err, object) {
             console.log(object);
         });
