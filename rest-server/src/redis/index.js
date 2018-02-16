@@ -1,3 +1,4 @@
+
 import Promise from 'bluebird';
 const redis = require("redis")
 const client = redis.createClient();
@@ -57,6 +58,7 @@ export const setUserStats = (array) => {
         });
     }
 }
+
 
 export const setUserImg = (key, imgLink) => {
     
