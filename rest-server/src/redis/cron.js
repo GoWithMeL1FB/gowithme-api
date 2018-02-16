@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { Promise } from 'bluebird';
 import { setUserStats } from './index.js'
+import url from '../../../config'
 
 import { getItinerariesByUsernameQuery } from '../../../events-server/src/components/itinerary/itineraryQueries';
 
@@ -29,7 +30,7 @@ const StatWorker = new CronJob('* 1 * * * *', async () => {
   // await Promise.all(userStats, userStats.forEach(async (user) => {
     for(let i = 0; i < userStats.length; i ++) {
       // let itineraries = await getItinerariesByUsernameQuery(user.username)
-      const { data } = await axios.get(`http://localhost:3031/api/itinerary/getItinerariesByUsername/${userStats[i].username}`)
+      const { data } = await axios.get(`${url.eventServer}/api/itinerary/getItinerariesByUsername/${userStats[i].username}`)
       console.log('data= ', data);
         data.forEach(itin => {
           console.log(itin.title);
