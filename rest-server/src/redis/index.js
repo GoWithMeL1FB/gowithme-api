@@ -18,8 +18,8 @@ export const getUserStats = async (username) => {
     try{
         let stats = null;
         console.log('heyhey', username);
-        await client.hgetallAsync(`${username}`).then((object) => {
-            console.log("~~~this is the redis object", object);
+        await client.hgetallAsync(`${username}`)
+        .then((object) => {
             stats = object;
         }) 
         console.log("!!***** getUserStats function ", username, stats)
@@ -27,6 +27,21 @@ export const getUserStats = async (username) => {
     } catch(err) {
         console.log(err);
     }
+}
+
+export const getUserImg = async (userImgRef) => {
+    try{
+        let img = null
+        await client.getAsync(`${userImgRef}`)
+        .then((reply) => {
+            img = reply;
+        }) 
+        console.log("******REDIS IMAGE", img);
+        return img
+    } catch(err) {
+        console.log(err);
+    }
+
 }
 
 export const setUserStats = (array) => {
@@ -40,10 +55,12 @@ export const setUserStats = (array) => {
         client.hgetall(`${array[i].username}`, function(err, object) {
             console.log(object);
         });
-
-
     }
-
-
 }
 
+export const setUserImg = (key, imgLink) => {
+    
+        client.set(`${key}`, `${imgLink}`, redis.print);
+        getUserImg(`${key}`);
+
+}
