@@ -25,7 +25,6 @@ export const signUpController = async (req, res) => {
 
 export const loginController = async (req, res) => {
   try {
-    console.log('Controller - login body:', req.body);
     // retrieves user info and hashed password
     const verification = await loginQuery(req.body);
     const { username, email, hashedPassword } = verification;

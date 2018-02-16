@@ -4,14 +4,15 @@ import {
   getAllEventsHelper,
   getEventsByItinSQLHelper,
   getEventByIdSQLHelper,
+  eventByIdHelper,
 } from './eventSQLHelpers';
 import { success, error } from '../../lib/logger';
 
 export const createEventQuery = async(body) => {
   try {
     // save generic event to db
-    // const sharedEvent = createEventHelper(body);
-    // const data = await sharedEvent.save();
+    const sharedEvent = createEventHelper(body);
+    const data = await sharedEvent.save();
 
     // use data._id to save event id to users' event
     const userEvent = createEventInstanceHelper(body);
@@ -52,7 +53,18 @@ export const getEventsByIdQuery = async(event) => {
     const events = await getEventByIdSQLHelper(event);
     return events;
   } catch(err) {
-    err('Queries - failed to get event by id');
+    error('Queries - failed to get event by id');
+    throw new Error(err.message);
+  }
+}
+
+export const eventByIdQuery = async(id) => {
+  try {
+    const details = await eventByIdHelper(id);
+    console.log('query - event info:', details);
+    return details;
+  } catch(err) {
+    error('Queries - failed to query event details');
     throw new Error(err.message);
   }
 }

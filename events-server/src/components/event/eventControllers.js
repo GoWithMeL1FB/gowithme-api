@@ -3,6 +3,7 @@ import {
   getAllEventsQuery,
   getEventsByItinQuery,
   getEventsByIdQuery,
+  eventByIdQuery,
 } from './eventQueries';
 import { success, error } from '../../lib/logger';
 
@@ -20,6 +21,7 @@ export const createEventController = async(req, res) => {
 export const getAllEventsController = async(req, res) => {
   try {
     const allEvents = await getAllEventsQuery();
+    console.log('Controller - all events:', allEvents);
     return res.status(200).send(allEvents);
   } catch(err) {
     error('Controller - Failed to query all events');
@@ -39,6 +41,16 @@ export const getEventsByItinController = async(req, res) => {
     res.status(200).send(eventInfo);
   } catch(err) {
     error('Controller - Failed to query event by itinerary id');
+    throw new Error(err.message);
+  }
+}
+
+export const eventByIdController = async(req, res) => {
+  try {
+    const eventDetail = await eventByIdQuery(req.params.id);
+    res.status(200).send(eventDetail);
+  } catch(err) {
+    error('Controller - failed to get events by id');
     throw new Error(err.message);
   }
 }
