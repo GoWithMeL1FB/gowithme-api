@@ -1,7 +1,8 @@
 import Favorites from '../../config/schemas/favories';
+import EventInstance from '../../config/schemas/eventsInstance';
 
-export const getFavesSQLHelper = (owner) => (
-  Favorites.find({ owner: '${owner}'})
+export const getFavesSQLHelper = (username) => (
+  Favorites.find({ owner: username})
 )
 
 export const faveSomethingSQLHelper = ({ owner, type, id }) => {
@@ -27,3 +28,11 @@ export const deleteFaveItemSQLHelper = ({owner, type, id }) => {
     });
   }
 }
+
+export const getItinEventDetailsSQLHelper = (ID) => (
+  EventInstance.findById(ID, (err) => {
+    if (err) {
+      console.error('SQLHelper - could not get info with id \n', err);
+    }
+  })
+);

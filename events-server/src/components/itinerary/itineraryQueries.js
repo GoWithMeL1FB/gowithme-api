@@ -3,6 +3,7 @@ import {
   addEventToHelper,
   allItinerariesHelper,
   getItinerarByUsernameSQLHelper,
+  getItinByIdSQLHelper,
 } from './itinerarySQLHelpers';
 import { success, error } from '../../lib/logger';
 
@@ -54,3 +55,13 @@ export const getItinerariesByUsernameQuery = async (username) => {
     throw new Error(err.message);
   }
 };
+
+export const getItinByIdQuery = async(id) => {
+  try {
+    const details = await getItinByIdSQLHelper(id);
+    return details;
+  } catch(err) {
+    error('Queries - failed to fetch events by id');
+    throw new Error(err.message);
+  }
+}

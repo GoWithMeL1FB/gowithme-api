@@ -1,10 +1,11 @@
 import Event from '../../config/schemas/event';
 import EventInstance from '../../config/schemas/eventsInstance';
+import Itinerary from '../../config/schemas/itinerary';
 
 export const createEventHelper = ({
-  title, description, location, category, atendees, prefix, suffix }) => (
+  name, description, location, category, atendees, prefix, suffix }) => (
   new Event({
-    title,
+    name,
     description,
     location,
     category,
@@ -17,10 +18,10 @@ export const createEventHelper = ({
 );
 
 export const createEventInstanceHelper = ({
-  title, description, location, category, attendees, prefix, suffix, date,
-  start, end, duration, itineraryId }, { _id }) => (
+  name, description, location, category, attendees, prefix, suffix, date,
+  start, end, duration, itineraryId }) => (
   new EventInstance({
-    title,
+    name,
     description,
     location,
     category,
@@ -36,10 +37,18 @@ export const createEventInstanceHelper = ({
       attendees,
     },
     _itineraryId: itineraryId,
-    _eventId: _id,
   })
 );
 
 export const getAllEventsHelper = () => (
   Event.find()
+)
+
+
+export const getEventsByItinSQLHelper = (id) => (
+  Itinerary.findById(id)
+)
+
+export const getEventByIdSQLHelper = (id) => (
+  EventInstance.findById(id)
 )
