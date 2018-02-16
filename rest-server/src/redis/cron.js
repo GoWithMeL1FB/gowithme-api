@@ -1,11 +1,11 @@
-// import axios from 'axios'
-// import { Promise } from 'bluebird';
-// import { setUserStats } from './index.js'
+import axios from 'axios'
+import { Promise } from 'bluebird';
+import { setUserStats } from './index.js'
 
-// import { getItinerariesByUsernameQuery } from '../../../events-server/src/components/itinerary/itineraryQueries';
+import { getItinerariesByUsernameQuery } from '../../../events-server/src/components/itinerary/itineraryQueries';
 
-// const { userQuery } = require('../components/user/userQueries');
-// const CronJob = require('cron').CronJob;
+const { userQuery } = require('../components/user/userQueries');
+const CronJob = require('cron').CronJob;
 
 const StatWorker = new CronJob('* 1 * * * *', async () => {
   console.log("Cron job Ran!");
