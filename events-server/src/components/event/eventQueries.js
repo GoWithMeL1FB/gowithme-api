@@ -30,7 +30,6 @@ export const getAllEventsQuery = async(body) => {
   try {
     // calls db for all events
     const data = await getAllEventsHelper();
-    console.log('query - data:', data);
     return data;
   } catch(err) {
     error('Queries - failed to grab all events')
