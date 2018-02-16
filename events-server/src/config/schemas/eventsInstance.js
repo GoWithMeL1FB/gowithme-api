@@ -15,8 +15,11 @@ const EventInstanceSchema = new mongoose.Schema({
       type: String,
     },
     suffix: {
-      type: String
+      type: String,
     },
+    url: {
+      type: String,
+    }
   },
   price: {
     type: String,

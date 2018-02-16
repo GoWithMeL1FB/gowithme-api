@@ -15,7 +15,7 @@ const ItinerarySchema = new mongoose.Schema({
   events: [
     {
       event: {
-        type: mongoose.SchemaTypes.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'EventInstance',
       },
     },

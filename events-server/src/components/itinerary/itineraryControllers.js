@@ -63,9 +63,7 @@ export const getItinerariesByUsernameController = async (req, res) => {
   console.log("req params", req.params.username);
   try {
     const itinerariesByUsername = await getItinerariesByUsernameQuery(req.params.username);
-
     return res.status(200).send(itinerariesByUsername);
-
   } catch(err) {
     error('Controller - Failed to fetch events by username')
     throw new Error(err.message);

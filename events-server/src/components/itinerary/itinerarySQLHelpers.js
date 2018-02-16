@@ -32,7 +32,7 @@ export const getItinerarByUsernameSQLHelper = async (username) => {
   let results;
   await Itinerary.find({owner: `${username}`}, (err, data) => {
     if (err) {
-     
+
       throw new Error(err)
     } else {
       results = data
