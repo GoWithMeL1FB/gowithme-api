@@ -12,7 +12,7 @@ client.on("connect", () => {
     console.log('redis connected!');
 });
 client.on("error", function(err) {
-    console.log("Redis Error", + err);
+    console.log("Redis Error" + err);
   });
 
 export const getUserStats = async (username) => {
