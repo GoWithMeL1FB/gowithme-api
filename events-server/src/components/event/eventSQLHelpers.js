@@ -52,3 +52,7 @@ export const getEventsByItinSQLHelper = (id) => (
 export const getEventByIdSQLHelper = (id) => (
   EventInstance.findById(id)
 )
+
+export const eventByIdHelper = (id) => (
+  Event.findById(id)
+)
