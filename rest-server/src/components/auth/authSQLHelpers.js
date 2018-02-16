@@ -9,7 +9,7 @@ export const getUserIDHelper = ({ username, email }) => {
   return`
     SELECT id
     FROM users
-    WHERE username = '${username}' AND email = '${email}'
+    WHERE username = '${username}'
   `;
 };
 

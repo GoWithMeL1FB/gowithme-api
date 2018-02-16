@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const EventInstanceSchema = new mongoose.Schema({
-  title: {
+  name: {
     type: String,
   },
   description: {
@@ -15,8 +15,11 @@ const EventInstanceSchema = new mongoose.Schema({
       type: String,
     },
     suffix: {
-      type: String
+      type: String,
     },
+    url: {
+      type: String,
+    }
   },
   price: {
     type: String,
@@ -77,9 +80,6 @@ const EventInstanceSchema = new mongoose.Schema({
     type: String,
   },
   _itineraryId: {
-    type: String,
-  },
-  _eventId: {
     type: String,
   },
 });
