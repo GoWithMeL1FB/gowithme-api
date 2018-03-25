@@ -14,7 +14,7 @@ const PORT = 3030;
 
 const serve = server.listen(PORT, (err) => {
   if (err) throw new Error;
-  success('successfully connected to port:', PORT);
+  else success('successfully connected to port:', PORT);
 });
 
 module.exports = { app: app, serve: server }

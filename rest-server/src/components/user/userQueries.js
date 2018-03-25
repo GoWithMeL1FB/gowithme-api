@@ -22,7 +22,7 @@ export const userQuery = async () => {
 export const getUserInfoQuery = async (body) => {
   try {
     // let result = [];
-    console.log("This should be first", body);
+    // console.log("This should be first", body);
     const queryString = getUserDataHelper(body);
     const usersData = await db.query(queryString);
     // const userStats = await getUserStats(body.username);

@@ -21,7 +21,7 @@
       "error",
       { "singleQuote": true, "trailingComma": true }
     ],
-    "no-console": "off",
+  "no-console": "off",
   "import/first": "off",
   "import/prefer-default-export": "off",
   "import/no-unresolved": [
